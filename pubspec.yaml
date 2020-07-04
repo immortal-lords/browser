@@ -11,6 +11,7 @@ dependencies:
   angular_components: ^0.13.0+1
   common:
     path: ../common
+  jaguar_resty:
 
 dev_dependencies:
   angular_test: ^2.3.0

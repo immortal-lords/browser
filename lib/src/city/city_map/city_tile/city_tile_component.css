@@ -5,3 +5,7 @@
     background-color: #a6c71d;
     border: 0px solid #5c6e10;
 }
+
+:host(:hover) {
+    background-color: #b9d641;
+}

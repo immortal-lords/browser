@@ -2,8 +2,18 @@
     width: 100%;
     height: 100%;
     display: block;
+    position: relative;
+    background-color: black;
 }
 
 .land {
+    position: absolute;
+    width: 1500px;
+    height: 1500px;
     transform: rotateX(55deg) rotateZ(45deg);
+}
+
+.row {
+    width: 100%;
+    height: 100px;
 }
