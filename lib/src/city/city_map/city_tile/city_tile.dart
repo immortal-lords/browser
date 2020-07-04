@@ -10,9 +10,15 @@ class CityTile {
 
   final _entityChanged = StreamController<CityEntity>();
 
-  CityTile(this.position);
+  Stream<CityEntity> _entityChangedStream;
+
+  CityTile(this.position) {
+    _entityChangedStream = _entityChanged.stream.asBroadcastStream();
+  }
 
   CityEntity get entity => _entity;
+
+  Stream<CityEntity> get onEntityChange => _entityChangedStream;
 
   set entity(CityEntity value) {
     if (value == null) {

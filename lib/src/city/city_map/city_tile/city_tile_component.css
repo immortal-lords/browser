@@ -4,8 +4,43 @@
     display: inline-block;
     background-color: #a6c71d;
     border: 0px solid #5c6e10;
+    position: relative;
 }
 
 :host(:hover) {
     background-color: #b9d641;
+}
+
+.content {
+    width: 145%;
+    height: 178%;
+    position: absolute;
+    left: -39%;
+    bottom: -23%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.image {
+    transform: rotateX(0deg) rotateZ(-45deg);
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: contain;
+    background-size: 65%;
+}
+
+.image.forest {
+    background-image: url(/static/img/city/nodes/forest.png);
+}
+
+.image.hill {
+    background-image: url(/static/img/city/nodes/hill.png);
+}
+
+.image.mountain {
+    background-image: url(/static/img/city/nodes/mountain.png);
+}
+
+.image.lumber-camp {
+    background-image: url(/static/img/city/nodes/lumbercamp.png);
 }

@@ -107,8 +107,11 @@ class CityMapComponent implements OnInit {
   Point<int> _panCurrent;
 
   void beginPan(MouseEvent event) {
+    if (event.button != 0) {
+      return;
+    }
+
     _panStart = _panCurrent = Point<int>(event.client.x, event.client.y);
-    print('pan start');
   }
 
   @HostListener('mousemove')
@@ -128,7 +131,9 @@ class CityMapComponent implements OnInit {
 
   @HostListener('mouseup')
   void panEnd(MouseEvent event) {
-    print('pan end');
+    if (_panStart == null) {
+      return;
+    }
 
     _landOffset = Point<int>(_landOffset.x + (_panCurrent.x - _panStart.x),
         _landOffset.y + (_panCurrent.y - _panStart.y));

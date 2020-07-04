@@ -32,6 +32,7 @@ class AppComponent implements OnInit {
         .login(LoginRequest(email: 'knight@example.com', password: 'S3cr3t'));
 
     await service.init();
+    service.startCityUpdate();
 
     waitingLogin = false;
   }
