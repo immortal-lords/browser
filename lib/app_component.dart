@@ -1,10 +1,21 @@
+import 'dart:html';
+
 import 'package:angular/angular.dart';
 import 'package:browser/src/city/city_map/city_map_component.dart';
 import 'package:browser/src/city/service.dart';
 import 'package:common/api.dart';
+import 'package:common/api_html.dart';
+
+void handleSessionExpiry() {
+  window.alert('Session expired. Please login again');
+  window.location.assign('/login.html');
+}
 
 Api makeApi() {
-  final api = Api(baseUrl: 'http://localhost:15000/');
+  final api = Api(
+      baseUrl: 'http://localhost:15000/',
+      tokenStore: TokenStoreSessionStorage(),
+      onSessionExpire: handleSessionExpiry);
   return api;
 }
 
@@ -28,8 +39,7 @@ class AppComponent implements OnInit {
 
   @override
   void ngOnInit() async {
-    await service.api
-        .login(LoginRequest(email: 'knight@example.com', password: 'S3cr3t'));
+    await service.login();
 
     await service.init();
     service.startCityUpdate();

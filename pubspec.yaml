@@ -12,6 +12,7 @@ dependencies:
   common:
     path: ../common
   jaguar_resty:
+  duration: ^2.0.14
 
 dev_dependencies:
   angular_test: ^2.3.0

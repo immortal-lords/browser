@@ -25,7 +25,7 @@
     width: 22%;
     height: 34%;
     transform: rotateX(0deg) rotateZ(-45deg);
-    background-color: #4644de;
+    background-color: #000000;
     border-radius: 50%;
     text-align: center;
     color: white;
@@ -33,7 +33,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
 }
 
 .image {
@@ -58,4 +57,12 @@
 
 .image.lumber-camp {
     background-image: url(/static/img/city/nodes/lumbercamp.png);
+}
+
+upgrade-progress {
+    z-index: 2;
+    position: absolute;
+    left: -11%;
+    top: -8%;
+    transform: rotateX(0deg) rotateZ(-45deg);
 }

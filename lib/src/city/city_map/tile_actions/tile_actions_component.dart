@@ -1,5 +1,4 @@
 import 'package:angular/angular.dart';
-import 'package:browser/src/city/city_map/city_map_component.dart';
 import 'package:browser/src/city/service.dart';
 import 'package:common/api.dart';
 
@@ -12,7 +11,7 @@ import '../city_tile/city_tile.dart';
   providers: [],
   directives: [NgIf],
 )
-class TileActionsComponent implements AfterChanges {
+class TileActionsComponent {
   final EmpireService empireService;
 
   @Input()
@@ -24,13 +23,13 @@ class TileActionsComponent implements AfterChanges {
 
   Building get building => entity is Building ? entity : null;
 
-  @override
-  void ngAfterChanges() {
-    print(building?.constructionEnd);
+  Future<void> construct(int type) async {
+    await empireService.constructBuilding(
+        empireService.city.id, tile.position, type);
   }
 
   Future<void> upgrade() async {
-    await empireService.api
-        .upgrade(empireService.city.id, building.id, building.level);
+    await empireService.upgradeBuilding(
+        empireService.city.id, building.id, building.level);
   }
 }

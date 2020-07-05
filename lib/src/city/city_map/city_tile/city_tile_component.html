@@ -1,5 +1,10 @@
 <template [ngIf]="entity != null">
     <div *ngIf="terrain != null" class="content image" [ngClass]="terrain.css"></div>
-    <div *ngIf="building != null" class="content image" [ngClass]="building.css"></div>
-    <div *ngIf="building != null" class="level">{{building.level}}</div>
+    <template [ngIf]="building != null">
+        <div class="content image" [ngClass]="building.css"></div>
+        <div class="level">{{building.level}}</div>
+        <template [ngIf]="building.constructionEnd != null">
+            <upgrade-progress [building]="building"></upgrade-progress>
+        </template>
+    </template>
 </template>

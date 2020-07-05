@@ -1,9 +1,10 @@
 import 'dart:async';
 
+import 'package:common/common.dart';
 import 'package:common/view.dart';
 
 class EmpireService {
-  final Api api;
+  final Api _api;
 
   Empire _empire;
 
@@ -15,7 +16,7 @@ class EmpireService {
 
   Timer _cityUpdaterTimer;
 
-  EmpireService(this.api) {
+  EmpireService(this._api) {
     _onCityUpdate = _cityUpdateEmitter.stream.asBroadcastStream();
   }
 
@@ -24,11 +25,9 @@ class EmpireService {
   City get city => _city;
 
   Future<void> init() async {
-    _empire = await api.getMyEmpire();
-    print(_empire);
+    _empire = await _api.getMyEmpire();
     if (_empire.cities.isEmpty) {
-      // TODO create city
-      return;
+      _empire = await _api.firstCity();
     }
 
     await changeCity(_empire.cities.first.id);
@@ -40,10 +39,14 @@ class EmpireService {
     }
 
     _cityUpdaterTimer = Timer.periodic(Duration(seconds: 10), (_) async {
-      _city = await api.getMyCityById(city.id);
-
-      _cityUpdateEmitter.add(_city);
+      await _updateCity();
+      // TODO update city when building construction completes
     });
+  }
+
+  Future<void> _updateCity() async {
+    _city = await _api.getMyCityById(city.id);
+    _cityUpdateEmitter.add(_city);
   }
 
   void stopCityUpdate() {
@@ -56,11 +59,27 @@ class EmpireService {
   }
 
   Future<void> changeCity(int cityId) async {
-    final city = await api.getMyCityById(cityId);
+    final city = await _api.getMyCityById(cityId);
     _city = city;
 
     _cityUpdateEmitter.add(_city);
   }
 
   Stream<City> get onCityUpdate => _onCityUpdate;
+
+  Future<void> login() async {
+    await _api
+        .login(LoginRequest(email: 'knight@example.com', password: 'S3cr3t'));
+  }
+
+  Future<void> constructBuilding(
+      int cityId, Position position, int type) async {
+    await _api.construct(cityId, position, type);
+    await _updateCity();
+  }
+
+  Future<void> upgradeBuilding(int cityId, int buildingId, int level) async {
+    await _api.upgrade(cityId, buildingId, level);
+    await _updateCity();
+  }
 }

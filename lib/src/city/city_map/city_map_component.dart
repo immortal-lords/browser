@@ -154,6 +154,10 @@ class CityMapComponent implements OnInit {
   CityTile get selectedTile => _selectedTile;
 
   Future<void> tileSelected(CityTile tile) async {
+    if(_selectedTile?.position == tile.position) {
+      _selectedTile = null;
+      return;
+    }
     _selectedTile = tile;
   }
 }
