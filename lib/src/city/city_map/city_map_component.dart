@@ -5,6 +5,7 @@ import 'package:angular/angular.dart';
 import 'package:browser/src/city/city_map/city_tile/city_tile.dart';
 import 'package:browser/src/city/city_map/city_tile/city_tile_component.dart';
 import 'package:browser/src/city/city_map/scaleinfo.dart';
+import 'package:browser/src/city/city_map/tile_actions/tile_actions_component.dart';
 import 'package:browser/src/city/service.dart';
 import 'package:common/api.dart';
 import 'package:common/common.dart';
@@ -17,6 +18,7 @@ import 'package:common/common.dart';
     NgFor,
     NgIf,
     CityTileComponent,
+    TileActionsComponent,
   ],
 )
 class CityMapComponent implements OnInit {
@@ -139,5 +141,19 @@ class CityMapComponent implements OnInit {
         _landOffset.y + (_panCurrent.y - _panStart.y));
 
     _panStart = _panCurrent = null;
+
+    _updateLandCenter();
+
+    event.stopImmediatePropagation();
+    event.stopPropagation();
+    event.preventDefault();
+  }
+
+  CityTile _selectedTile;
+
+  CityTile get selectedTile => _selectedTile;
+
+  Future<void> tileSelected(CityTile tile) async {
+    _selectedTile = tile;
   }
 }

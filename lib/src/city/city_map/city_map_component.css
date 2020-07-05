@@ -17,3 +17,11 @@
     width: 100%;
     height: 100px;
 }
+
+city-tile:hover {
+    background-color: #b9d641;
+}
+
+.selected {
+    background-color: red !important;
+}

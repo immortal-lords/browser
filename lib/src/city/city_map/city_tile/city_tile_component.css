@@ -7,10 +7,6 @@
     position: relative;
 }
 
-:host(:hover) {
-    background-color: #b9d641;
-}
-
 .content {
     width: 145%;
     height: 178%;
@@ -19,6 +15,25 @@
     bottom: -23%;
     z-index: 1;
     pointer-events: none;
+}
+
+.level {
+    z-index: 2;
+    position: absolute;
+    left: -15%;
+    top: 23%;
+    width: 22%;
+    height: 34%;
+    transform: rotateX(0deg) rotateZ(-45deg);
+    background-color: #4644de;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+    font-size: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
 .image {

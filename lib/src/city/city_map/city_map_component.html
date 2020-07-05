@@ -3,6 +3,11 @@
         [style.left.px]="landCenter.x" [style.top.px]="landCenter.y"
         (mousedown)="beginPan($event)">
     <div  *ngFor="let rows of tiles; let i=index" class="row" [style.height.px]="100 * scale">
-        <city-tile *ngFor="let tile of rows; let j=index" [tile]="tile" [scale]="scale"></city-tile>
+        <city-tile *ngFor="let tile of rows; let j=index" [tile]="tile" [scale]="scale" (click)="tileSelected(tile)"
+            [class.selected]="selectedTile == tile"></city-tile>
     </div>
 </div>
+
+<template [ngIf]="selectedTile != null">
+    <tile-actions [tile]="selectedTile"></tile-actions>
+</template>

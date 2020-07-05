@@ -31,8 +31,6 @@ class EmpireService {
       return;
     }
 
-    // TODO cache current city
-
     await changeCity(_empire.cities.first.id);
   }
 
@@ -41,7 +39,7 @@ class EmpireService {
       stopCityUpdate();
     }
 
-    _cityUpdaterTimer = Timer(Duration(seconds: 10), () async {
+    _cityUpdaterTimer = Timer.periodic(Duration(seconds: 10), (_) async {
       _city = await api.getMyCityById(city.id);
 
       _cityUpdateEmitter.add(_city);

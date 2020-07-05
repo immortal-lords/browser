@@ -1,0 +1,41 @@
+<div class="container">
+    <template [ngIf]="entity == null">
+        <div class="action">Lumber camp</div>
+        <div class="action">Lumber camp</div>
+        <div class="action">Lumber camp</div>
+        <div class="action">Lumber camp</div>
+        <div class="action">Lumber camp</div>
+        <div class="action">Lumber camp</div>
+        <div class="action">Lumber camp</div>
+        <div class="action">Lumber camp</div>
+        <div class="action">Lumber camp</div>
+        <div class="action">Lumber camp</div>
+        <div class="action">Lumber camp</div>
+        <div class="action">Lumber camp</div>
+        <div class="action">Lumber camp</div>
+        <div class="action">Lumber camp</div>
+        <div class="action">Lumber camp</div>
+        <div class="action">Lumber camp</div>
+        <div class="action">Lumber camp</div>
+        <div class="action">Lumber camp</div>
+        <div class="action">Lumber camp</div>
+        <div class="action">Lumber camp</div>
+        <div class="action">Lumber camp</div>
+        <div class="action">Lumber camp</div>
+        <div class="action">Lumber camp</div>
+        <div class="action">Lumber camp</div>
+        <!-- TODO building list -->
+    </template>
+
+    <template [ngIf]="building != null">
+        <template [ngIf]="building.constructionEnd == null">
+            <div class="action" (click)="upgrade">Upgrade</div>
+        </template>
+        <template [ngIf]="building.constructionEnd != null">
+            <div class="action">Cancel</div>
+            <!-- <div class="action">Finish</div> -->
+        </template>
+        <div class="action">Move</div>
+        <div class="action">Collect</div>
+    </template>
+</div>

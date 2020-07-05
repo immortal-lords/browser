@@ -1,0 +1,47 @@
+:host {
+    display: flex;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: 0px;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.container {
+    overflow: hidden;
+    background-color: rgba(0,0,0,0.7);
+    display: flex;
+    width: auto;
+    flex-direction: row;
+    height: auto;
+    align-items: center;
+    padding: 5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    max-width: 80%;
+    flex-wrap: wrap;
+}
+
+.action {
+    width: 80px;
+    height: 80px;
+    background-color: #ffffffcf;
+    border-radius: 8px;
+    margin: 5px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.action:first-child {
+}
+
+.action:last-child {
+}
+
+.action:active {
+    box-shadow: inset 3px 3px 6px black;
+}
