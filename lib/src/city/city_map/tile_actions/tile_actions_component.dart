@@ -32,4 +32,8 @@ class TileActionsComponent {
     await empireService.upgradeBuilding(
         empireService.city.id, building.id, building.level);
   }
+
+  Future<void> demolish() async {
+    await empireService.demolishBuilding(empireService.city.id, building.id);
+  }
 }

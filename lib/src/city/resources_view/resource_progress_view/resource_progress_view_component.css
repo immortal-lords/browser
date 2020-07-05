@@ -1,0 +1,105 @@
+:host {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    color: white;
+    margin-top: 3px;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.rate-max-holder {
+    width: calc(100% - 32px);
+    display: flex;
+    justify-content: space-between;
+    margin-left: 32px;
+    padding: 0px 2px;
+    box-sizing: border-box;
+}
+
+.holder {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.res-icon {
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    z-index: 1;
+}
+
+.res-icon.wood {
+    background-image: url(/static/img/resources/wood.png);
+}
+
+.res-icon.stone {
+    background-image: url(/static/img/resources/stone.png);
+}
+
+.res-icon.gold {
+    background-image: url(/static/img/resources/gold.png);
+}
+
+.progress-holder {
+    width: 150px;
+    height: 20px;
+
+    border: 2px solid black;
+    border-radius: 5px;
+
+    position: relative;
+    margin-left: -7px;
+}
+
+.progress-holder > * {
+    pointer-events: none;
+}
+
+.progress {
+    position: absolute;
+    height: 100%;
+    transition: width 0.5s;
+    border-radius: 2px;
+}
+
+.progress.wood {
+    background: linear-gradient(180deg, rgb(212, 117, 24) 0%, rgb(107, 60, 14) 100%);
+}
+
+.progress.stone {
+    background: linear-gradient(180deg, rgb(212, 117, 24) 0%, rgb(107, 60, 14) 100%);
+}
+
+.progress.gold {
+    background: linear-gradient(180deg, rgb(212, 117, 24) 0%, rgb(107, 60, 14) 100%);
+}
+
+.progress-highlight {
+    position: absolute;
+    left: 4px;
+    top: 2.2px;
+    width: calc(100% - 10px);
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.22);
+    border-radius: 12px;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.4));
+}
+
+.info-max {
+    font-weight: bold;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-size: 10px;
+}
+
+.info-amount {
+    font-weight: bold;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-size: 13px;
+    position: absolute;
+    right: 5px;
+    top: 2px;
+}

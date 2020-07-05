@@ -82,4 +82,9 @@ class EmpireService {
     await _api.upgrade(cityId, buildingId, level);
     await _updateCity();
   }
+
+  Future<void> demolishBuilding(int cityId, int buildingId) async {
+    await _api.demolish(cityId, buildingId);
+    await _updateCity();
+  }
 }
