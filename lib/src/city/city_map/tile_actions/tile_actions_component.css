@@ -6,6 +6,8 @@
     bottom: 0px;
     justify-content: center;
     flex-direction: row;
+    z-index: 50;
+    pointer-events: none;
 }
 
 .container {

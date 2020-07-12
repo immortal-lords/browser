@@ -1,11 +1,16 @@
+<div class="tile" [style.width.px]="scaleInfo.actualTileWidth" [style.height.px]="scaleInfo.actualTileHeight"
+     (click)="clicked()">
+
+</div>
+
 <template [ngIf]="entity != null">
     <div *ngIf="terrain != null" class="content city-node-image" [ngClass]="terrain.css"></div>
     <template [ngIf]="building != null">
         <div class="content city-node-image" [ngClass]="building.css"></div>
-        <div class="level">{{building.level}}</div>
         <template [ngIf]="building.constructionEnd != null">
             <upgrade-progress [building]="building"></upgrade-progress>
         </template>
+        <div class="level">{{building.level}}</div>
         <!-- <div class="tooltip">
             <building-info [building]="building"></building-info>
         </div> -->

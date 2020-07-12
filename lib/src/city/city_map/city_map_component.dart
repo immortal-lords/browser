@@ -40,8 +40,6 @@ class CityMapComponent implements OnInit {
 
   ScaleInfo scaleInfo = ScaleInfo.scales.last;
 
-  num get scale => scaleInfo.value;
-
   final List<List<CityTile>> tiles =
       CityTile.makeTiles(numColsInCity, numRowsInCity);
 
@@ -158,7 +156,7 @@ class CityMapComponent implements OnInit {
 
   CityTile get selectedTile => _selectedTile;
 
-  Future<void> tileSelected(MouseEvent event, CityTile tile) async {
+  Future<void> tileSelected(CityTile tile) async {
     // print(event.dataTransfer.getData('pan'));
 
     if(_selectedTile?.position == tile.position) {

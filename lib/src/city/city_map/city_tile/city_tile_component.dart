@@ -5,6 +5,7 @@ import 'package:browser/src/city/building_info/building_info_component.dart';
 import 'package:browser/src/city/city_map/city_tile/upgrade_progress/upgrade_progress_component.dart';
 import 'package:browser/src/city/service.dart';
 import 'package:common/view.dart';
+import '../scaleinfo.dart';
 
 import 'city_tile.dart';
 
@@ -20,7 +21,7 @@ import 'city_tile.dart';
     BuildingInfoComponent,
   ],
 )
-class CityTileComponent implements OnInit, OnDestroy {
+class CityTileComponent implements OnDestroy {
   CityTile _tile;
 
   EmpireService empireService;
@@ -45,14 +46,20 @@ class CityTileComponent implements OnInit, OnDestroy {
   CityEntity get entity => _tile?.entity;
 
   @Input()
-  num scale = 1;
+  @HostBinding('class.selected')
+  bool selected = false;
+
+  @Input()
+  ScaleInfo scaleInfo;
+
+  final _clickEmitter = StreamController<CityTile>();
+
+  @Output()
+  Stream<CityTile> get tileClicked => _clickEmitter.stream;
 
   ChangeDetectorRef _changeDetectorRef;
 
   CityTileComponent(this._changeDetectorRef, this.empireService);
-
-  @override
-  Future<Null> ngOnInit() async {}
 
   @override
   void ngOnDestroy() {
@@ -62,17 +69,11 @@ class CityTileComponent implements OnInit, OnDestroy {
     }
   }
 
-  @HostListener('click')
-  void clickHandler() {
-  }
-
-  @HostBinding('style.width.px')
-  int get width => (100 * scale).toInt();
-
-  @HostBinding('style.height.px')
-  int get height => (100 * scale).toInt();
-
   CityTerrain get terrain => entity is CityTerrain ? entity : null;
 
   Building get building => entity is Building ? entity : null;
+
+  void clicked() {
+    _clickEmitter.add(tile);
+  }
 }

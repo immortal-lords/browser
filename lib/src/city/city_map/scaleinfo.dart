@@ -1,52 +1,55 @@
+import 'package:common/common.dart';
+
 class ScaleInfo {
   final int id;
 
-  final num value;
+  final num scale;
 
-  final int marginLeft;
+  final int actualTileWidth;
 
-  final int marginTop;
+  final int actualTileHeight;
+
+  final int tileWidth;
+
+  final int tileHeight;
 
   final int landWidth;
 
   final int landHeight;
 
-  const ScaleInfo(
-      {this.id,
-        this.value,
-        this.marginLeft,
-        this.marginTop,
-        this.landWidth,
-        this.landHeight});
+  static int base = 100;
 
-  static const scales = <ScaleInfo>[
-    ScaleInfo(
-        id: 0,
-        value: 0.25,
-        marginLeft: 77,
-        marginTop: -34,
-        landWidth: 530,
-        landHeight: 304),
-    ScaleInfo(
-        id: 1,
-        value: 0.5,
-        marginLeft: 156,
-        marginTop: -70,
-        landWidth: 1060,
-        landHeight: 608),
-    ScaleInfo(
-        id: 2,
-        value: 0.75,
-        marginLeft: 232,
-        marginTop: -105,
-        landWidth: 1590,
-        landHeight: 912),
-    ScaleInfo(
-        id: 3,
-        value: 1,
-        marginLeft: 310,
-        marginTop: -141,
-        landWidth: 2121,
-        landHeight: 1216)
+  ScaleInfo({this.id, this.scale})
+      : tileWidth = convertX(base * scale),
+        tileHeight = convertY(base * scale),
+        actualTileWidth = base * scale,
+        actualTileHeight = base * scale,
+        landWidth = convertX(base * 15 * scale),
+        landHeight = convertY(base * 15 * scale);
+
+  int convertPosX(Position pos) =>
+      ((pos.y - pos.x - 1) * (tileWidth / 2)).toInt() /* + (landWidth ~/ 2)*/;
+
+  int convertPosY(Position pos) => ((pos.x + pos.y) * (tileHeight / 2)).toInt();
+
+  static int convertX(int x) => x ~/ 0.70711356243;
+
+  static int convertY(int y) => y ~/ (0.70711356243 * 1.74342537804);
+
+  static final scales = <ScaleInfo>[
+    ScaleInfo(id: 0, scale: 0.25),
+    ScaleInfo(id: 1, scale: 0.5),
+    ScaleInfo(id: 2, scale: 0.75),
+    ScaleInfo(id: 3, scale: 1)
   ];
 }
+
+/*
+x1 = ((y - x - 1) * width/2) + totalWidth/2
+y1 = (x + y) * height/2
+ */
+
+/*
+x1 = (x + y - 2) * width/2
+y1 = (x - y - 1) * height/2
+ */
