@@ -1,0 +1,41 @@
+.city-node-image {
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: contain;
+}
+
+.city-node-image.forest {
+    background-image: url(/static/img/city/nodes/forest.png);
+}
+
+.city-node-image.hill {
+    background-image: url(/static/img/city/nodes/hill.png);
+}
+
+.city-node-image.mountain {
+    background-image: url(/static/img/city/nodes/mountain.png);
+}
+
+.city-node-image.lumber-camp {
+    background-image: url(/static/img/city/nodes/lumbercamp.png);
+}
+
+.city-node-image.city-center {
+    background-image: url(/static/img/city/nodes/citycenter.png);
+}
+
+.city-node-image.quarry {
+    background-image: url(/static/img/city/nodes/quarry.png);
+}
+
+.city-node-image.gold-mine {
+    background-image: url(/static/img/city/nodes/goldmine.png);
+}
+
+.city-node-image.warehouse {
+    background-image: url(/static/img/city/nodes/warehouse.png);
+}
+
+.city-node-image.barrack {
+    background-image: url(/static/img/city/nodes/barrack.png);
+}

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:angular/angular.dart';
+import 'package:browser/src/city/building_info/building_info_component.dart';
 import 'package:browser/src/city/city_map/city_tile/upgrade_progress/upgrade_progress_component.dart';
 import 'package:browser/src/city/service.dart';
 import 'package:common/view.dart';
@@ -16,6 +17,7 @@ import 'city_tile.dart';
     NgIf,
     NgClass,
     UpgradeProgressComponent,
+    BuildingInfoComponent,
   ],
 )
 class CityTileComponent implements OnInit, OnDestroy {

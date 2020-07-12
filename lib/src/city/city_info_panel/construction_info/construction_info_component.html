@@ -1,0 +1,10 @@
+<div class="column"> <!-- TODO tooltip -->
+    <div class="icon buildings-icon"></div>
+    <div class="value" [ngClass]="{'full': city.numBuildings == city.maxBuildings}">
+        {{city.numBuildings}}/{{city.maxBuildings}}
+    </div>    <!-- TODO blinking red when full -->
+</div>
+<div class="column">    <!-- TODO tooltip -->
+    <div class="icon cs-icon"></div> <!-- TODO visual cs icons -->
+    <div class="value">{{city.constructionSpeed}}%</div>
+</div>

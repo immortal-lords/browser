@@ -1,10 +1,13 @@
 <template [ngIf]="entity != null">
-    <div *ngIf="terrain != null" class="content image" [ngClass]="terrain.css"></div>
+    <div *ngIf="terrain != null" class="content city-node-image" [ngClass]="terrain.css"></div>
     <template [ngIf]="building != null">
-        <div class="content image" [ngClass]="building.css"></div>
+        <div class="content city-node-image" [ngClass]="building.css"></div>
         <div class="level">{{building.level}}</div>
         <template [ngIf]="building.constructionEnd != null">
             <upgrade-progress [building]="building"></upgrade-progress>
         </template>
+        <!-- <div class="tooltip">
+            <building-info [building]="building"></building-info>
+        </div> -->
     </template>
 </template>

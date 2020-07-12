@@ -1,3 +1,5 @@
+@import 'package:browser/src/assets/css/city_node.css';
+
 :host {
     width: 100px;
     height: 100px;
@@ -35,28 +37,31 @@
     justify-content: center;
 }
 
-.image {
+.city-node-image {
     transform: rotateX(0deg) rotateZ(-45deg);
-    background-repeat: no-repeat;
-    background-position: bottom center;
-    background-size: contain;
-    background-size: 65%;
 }
 
-.image.forest {
-    background-image: url(/static/img/city/nodes/forest.png);
+.city-node-image {
+    transform: rotateX(0deg) rotateZ(-45deg);
 }
 
-.image.hill {
-    background-image: url(/static/img/city/nodes/hill.png);
+.tooltip {
+    transform: rotateX(0deg) rotateZ(-45deg);
+    display: none;
+    background-color: black;
+    overflow: hidden;
+    border-radius: 10px;
+    z-index: 3;
+    position: absolute;
+    left: 51%;
+    top: -262%;
+    margin-top: -50%;
+    width: 300px;
+    height: 400px;
 }
 
-.image.mountain {
-    background-image: url(/static/img/city/nodes/mountain.png);
-}
-
-.image.lumber-camp {
-    background-image: url(/static/img/city/nodes/lumbercamp.png);
+:host(:hover) .tooltip {
+    display: block;
 }
 
 upgrade-progress {

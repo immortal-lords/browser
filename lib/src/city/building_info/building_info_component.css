@@ -1,0 +1,35 @@
+@import 'package:browser/src/assets/css/city_node.css';
+
+:host {
+    width: 100%;
+    height: auto;
+    display: block;
+    color: white;
+}
+
+.building-image-holder {
+    width: 100px;
+    height: 100px;
+}
+
+.description-holder {
+    display: flex;
+    width: 100%
+}
+
+.description-holder .city-node-image {
+    width: 100%;
+    height: 100%;
+}
+
+.description-holder .description-name-holder {
+    flex: 1;
+}
+
+.name {
+
+}
+
+.description {
+
+}

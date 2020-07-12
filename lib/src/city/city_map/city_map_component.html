@@ -12,4 +12,4 @@
     <tile-actions [tile]="selectedTile"></tile-actions>
 </template>
 
-<resources-view *ngIf="city != null" [resources]="city.resources"></resources-view>
+<city-info-panel *ngIf="city != null" [city]="city"></city-info-panel>

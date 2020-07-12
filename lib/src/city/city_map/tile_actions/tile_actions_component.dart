@@ -1,6 +1,7 @@
 import 'package:angular/angular.dart';
 import 'package:browser/src/city/service.dart';
 import 'package:common/api.dart';
+import 'package:common/common.dart';
 
 import '../city_tile/city_tile.dart';
 
@@ -9,7 +10,7 @@ import '../city_tile/city_tile.dart';
   styleUrls: ['tile_actions_component.css'],
   templateUrl: 'tile_actions_component.html',
   providers: [],
-  directives: [NgIf],
+  directives: [NgIf, NgFor],
 )
 class TileActionsComponent {
   final EmpireService empireService;
@@ -36,4 +37,6 @@ class TileActionsComponent {
   Future<void> demolish() async {
     await empireService.demolishBuilding(empireService.city.id, building.id);
   }
+
+  static final buildings = BuildingSpec.buildings;
 }

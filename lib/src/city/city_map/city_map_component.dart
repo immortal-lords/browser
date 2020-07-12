@@ -2,11 +2,11 @@ import 'dart:async';
 import 'dart:html';
 
 import 'package:angular/angular.dart';
+import 'package:browser/src/city/city_info_panel/info_panel_component.dart';
 import 'package:browser/src/city/city_map/city_tile/city_tile.dart';
 import 'package:browser/src/city/city_map/city_tile/city_tile_component.dart';
 import 'package:browser/src/city/city_map/scaleinfo.dart';
 import 'package:browser/src/city/city_map/tile_actions/tile_actions_component.dart';
-import 'package:browser/src/city/resources_view/resources_view_component.dart';
 import 'package:browser/src/city/service.dart';
 import 'package:common/api.dart';
 import 'package:common/common.dart';
@@ -20,7 +20,7 @@ import 'package:common/common.dart';
     NgIf,
     CityTileComponent,
     TileActionsComponent,
-    ResourcesViewComponent,
+    CityInfoPanelComponent,
   ],
 )
 class CityMapComponent implements OnInit {
@@ -152,9 +152,6 @@ class CityMapComponent implements OnInit {
     event.stopImmediatePropagation();
     event.stopPropagation();
     event.preventDefault();
-
-    print('here');
-    // event.dataTransfer.setData('pan', 'true');
   }
 
   CityTile _selectedTile;
@@ -162,8 +159,6 @@ class CityMapComponent implements OnInit {
   CityTile get selectedTile => _selectedTile;
 
   Future<void> tileSelected(MouseEvent event, CityTile tile) async {
-    print('there');
-
     // print(event.dataTransfer.getData('pan'));
 
     if(_selectedTile?.position == tile.position) {
