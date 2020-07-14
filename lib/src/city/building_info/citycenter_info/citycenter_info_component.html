@@ -1,0 +1,17 @@
+<div class="section">
+    <div class="section-header">Level {{building.level}} base stats</div>
+    <div class="stat">
+        <div class="label">Buildings</div>
+        <div class="value">{{building.level * 5}}</div>
+    </div>
+    <div class="stat">
+        <div class="label">Construction speed bonus</div>
+        <div class="value">{{constructionSpeedBonus}}%</div>
+    </div>
+    <div class="stat">
+        <div class="label">Trade carts</div>
+        <div class="value">{{tradeCarts}}</div>
+    </div>
+</div>
+
+<citycenter-upgrade-info *ngIf="building.level < 20" [city]="city" [building]="building"></citycenter-upgrade-info>

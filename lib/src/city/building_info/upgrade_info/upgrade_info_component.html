@@ -1,0 +1,6 @@
+<citycenter-upgrade-info *ngIf="building.type == BuildingSpec.cityCenterId" [building]="building" [city]="city"></citycenter-upgrade-info>
+<lumbercamp-upgrade-info *ngIf="building.type == BuildingSpec.lumberCampId" [building]="building" [city]="city"></lumbercamp-upgrade-info>
+<quarry-upgrade-info *ngIf="building.type == BuildingSpec.quarryId" [building]="building" [city]="city"></quarry-upgrade-info>
+<goldmine-upgrade-info *ngIf="building.type == BuildingSpec.goldMineId" [building]="building" [city]="city"></goldmine-upgrade-info>
+<warehouse-upgrade-info *ngIf="building.type == BuildingSpec.warehouseId" [building]="building" [city]="city"></warehouse-upgrade-info>
+<barrack-upgrade-info *ngIf="building.type == BuildingSpec.barrackId" [building]="building" [city]="city"></barrack-upgrade-info>

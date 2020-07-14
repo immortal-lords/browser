@@ -1,0 +1,30 @@
+<div class="section">
+    <div class="section-header">Level {{building.level}} base stats</div>
+    <div class="stat">
+        <div class="label">Gold/hr</div>
+        <div class="value">{{goldPerHour}}</div>
+    </div>
+
+    <div class="stat">
+        <div class="label">Gold storage bonus</div>
+        <div class="value">{{goldStorageBonus}}%</div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-header">Combined stats</div>
+    <div class="stat">
+        <div class="label">Bonus gold/hr</div>
+        <div class="value">
+            {{combinedGoldPerHour['totalBonus']}}% =
+                <span class="city-node-image hill"></span>({{combinedGoldPerHour['hills']}} x 50%)
+                 + <span class="city-node-image warehouse"></span>({{combinedGoldPerHour['warehouseBonus']}}%)
+        </div>
+    </div>
+    <div class="stat">
+        <div class="label">Total gold/hr</div>
+        <div class="value">{{combinedGoldPerHour['total']}}</div>
+    </div>
+</div>
+
+<goldmine-upgrade-info *ngIf="building.level < 20" [city]="city" [building]="building"></goldmine-upgrade-info>

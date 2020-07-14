@@ -1,0 +1,29 @@
+<div class="section" *ngIf="building.level < 20">
+    <div class="section-header">Level {{building.level + 1}} base stats (upgrade)</div>
+    <div class="stat">
+        <div class="label">Recruitment speed bonus</div>
+        <div class="value">{{nextRecruitmentSpeedBonus}}%</div>
+    </div>
+
+    <div class="stat">
+        <div class="label">Troop capacity</div>
+        <div class="value">{{nextTroopCapacity}}</div>
+    </div>
+
+    <div class="stat">
+        <div class="label">Upgrade cost</div>
+        <div class="value">
+            <div class="res-icon wood"></div>
+            <span class="res-value">{{upgradeCost.wood}}</span>
+            <div class="res-icon stone"></div>
+            <span class="res-value">{{upgradeCost.stone}}</span>
+            <div class="res-icon gold"></div>
+            <span class="res-value">{{upgradeCost.gold}}</span>
+        </div>
+    </div>
+
+    <div class="stat">
+        <div class="label">Construction time</div>
+        <div class="value">{{constructionTime}}</div>
+    </div>
+</div>

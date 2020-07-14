@@ -16,9 +16,11 @@
     <div class="stat">
         <div class="label">Bonus wood/hr</div>
         <div class="value">
-            {{combinedWoodPerHour['totalBonus']}}% =
+            {{combinedWoodPerHour['totalBonus']}}%
+            <template [ngIf]="combinedWoodPerHour['totalBonus'] != 0"> =
                 <span class="city-node-image forest"></span>({{combinedWoodPerHour['forests']}} x 50%)
-                 + <span class="city-node-image warehouse"></span>({{combinedWoodPerHour['warehouseBonus']}}%)
+                <template [ngIf]="combinedWoodPerHour['warehouseBonus'] != 0"> + <span class="city-node-image warehouse"></span>({{combinedWoodPerHour['warehouseBonus']}})</template>
+            </template>
         </div>
     </div>
     <div class="stat">

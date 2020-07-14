@@ -1,0 +1,37 @@
+<div class="section">
+    <div class="section-header">Level {{building.level}} base stats</div>
+    <div class="stat">
+        <div class="label">Storage capacity</div>
+        <div class="value">{{storageCapacity}}</div>
+    </div>
+
+    <div class="stat">
+        <div class="label">Production bonus</div>
+        <div class="value">{{productionBonus}}%</div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-header">Combined stats</div>
+    <div class="stat">
+        <div class="label">Bonus storage</div>
+        <div class="value">
+            <div class="res-icon wood"></div><span class="res-value">{{combinedStorage['woodBonus']}}%</span>
+            <div class="res-icon stone"></div><span class="res-value">{{combinedStorage['stoneBonus']}}%</span>
+            <div class="res-icon gold"></div><span class="res-value">{{combinedStorage['goldBonus']}}%</span>
+        </div>
+    </div>
+    <div class="stat">
+        <div class="label">Total storage</div>
+        <div class="value">
+            <div class="res-icon wood"></div>
+            <span class="res-value">{{combinedStorage['woodStorage']}}</span>
+            <div class="res-icon stone"></div>
+            <span class="res-value">{{combinedStorage['stoneStorage']}}</span>
+            <div class="res-icon gold"></div>
+            <span class="res-value">{{combinedStorage['goldStorage']}}</span>
+        </div>
+    </div>
+</div>
+
+<warehouse-upgrade-info *ngIf="building.level < 20" [city]="city" [building]="building"></warehouse-upgrade-info>

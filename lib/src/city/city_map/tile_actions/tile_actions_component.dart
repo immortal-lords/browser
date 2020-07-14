@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:angular/angular.dart';
-import 'package:browser/src/city/building_info/upgrade_tooltip/upgrade_info_component.dart';
+import 'package:browser/src/city/building_info/upgrade_info/upgrade_info_component.dart';
 import 'package:browser/src/city/service.dart';
 import 'package:common/api.dart';
 import 'package:common/common.dart';
@@ -39,26 +39,31 @@ class TileActionsComponent {
   Building get building => entity is Building ? entity : null;
 
   Future<void> construct(int type) async {
+    _moveController.add(null);
     await empireService.constructBuilding(
         empireService.city.id, tile.position, type);
   }
 
   Future<void> upgrade() async {
+    _moveController.add(null);
     await empireService.upgradeBuilding(
         empireService.city.id, building.id, building.level);
   }
 
   Future<void> complete() async {
+    _moveController.add(null);
     await empireService.completeBuildingUpgrade(
         empireService.city.id, building.id, building.level);
   }
 
   Future<void> cancel() async {
+    _moveController.add(null);
     await empireService.cancelBuildingUpgrade(
         empireService.city.id, building.id, building.level);
   }
 
   Future<void> demolish() async {
+    _moveController.add(null);
     await empireService.demolishBuilding(empireService.city.id, building.id);
   }
 

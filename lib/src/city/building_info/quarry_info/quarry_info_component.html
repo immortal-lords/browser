@@ -1,0 +1,30 @@
+<div class="section">
+    <div class="section-header">Level {{building.level}} base stats</div>
+    <div class="stat">
+        <div class="label">Stone/hr</div>
+        <div class="value">{{stonePerHour}}</div>
+    </div>
+
+    <div class="stat">
+        <div class="label">Stone storage bonus</div>
+        <div class="value">{{stoneStorageBonus}}%</div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-header">Combined stats</div>
+    <div class="stat">
+        <div class="label">Bonus stone/hr</div>
+        <div class="value">
+            {{combinedStonePerHour['totalBonus']}}% =
+                <span class="city-node-image mountain"></span>({{combinedStonePerHour['mountains']}} x 50%)
+                 + <span class="city-node-image warehouse"></span>({{combinedStonePerHour['warehouseBonus']}}%)
+        </div>
+    </div>
+    <div class="stat">
+        <div class="label">Total stone/hr</div>
+        <div class="value">{{combinedStonePerHour['total']}}</div>
+    </div>
+</div>
+
+<quarry-upgrade-info *ngIf="building.level < 20" [city]="city" [building]="building"></quarry-upgrade-info>

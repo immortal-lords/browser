@@ -4,9 +4,9 @@ import 'package:common/common.dart';
 import 'package:duration/duration.dart';
 
 @Component(
-  selector: 'lumbercamp-upgrade-info',
-  styleUrls: ['lumbercamp_upgrade_info_component.css'],
-  templateUrl: 'lumbercamp_upgrade_info_component.html',
+  selector: 'warehouse-upgrade-info',
+  styleUrls: ['warehouse_upgrade_info_component.css'],
+  templateUrl: 'warehouse_upgrade_info_component.html',
   providers: [],
   directives: [
     NgIf,
@@ -14,18 +14,18 @@ import 'package:duration/duration.dart';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 )
-class LumberCampUpgradeInfoComponent {
+class WarehouseUpgradeInfoComponent {
   @Input()
   City city;
 
   @Input()
   Building building;
 
-  LumberCampUpgradeInfoComponent();
+  WarehouseUpgradeInfoComponent();
 
-  int get nextWoodPerHour => building.spec.production1[building.level + 1];
+  int get nextStoragePerHour => building.spec.production1[building.level + 1];
 
-  int get nextWoodStorageBonus => building.spec.production2[building.level + 1];
+  int get nextProductionBonus => building.spec.production2[building.level + 1];
 
   ConstResource get upgradeCost =>
       building.spec.constructionCost[building.level + 1];

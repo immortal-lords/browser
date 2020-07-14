@@ -6,13 +6,8 @@
     </div>
 </div>
 
+<citycenter-building-info *ngIf="building.type == BuildingSpec.cityCenterId" [building]="building" [city]="city"></citycenter-building-info>
 <lumbercamp-building-info *ngIf="building.type == BuildingSpec.lumberCampId" [building]="building" [city]="city"></lumbercamp-building-info>
-
-<!-- TODO base production -->
-<!-- TODO production bonus -->
-<!-- TODO total production -->
-
-<!-- TODO boost contribution -->
-
-<!-- TODO upgrade cost -->
-<!-- TODO upgrade stats -->
+<quarry-building-info *ngIf="building.type == BuildingSpec.quarryId" [building]="building" [city]="city"></quarry-building-info>
+<goldmine-building-info *ngIf="building.type == BuildingSpec.goldMineId" [building]="building" [city]="city"></goldmine-building-info>
+<warehouse-building-info *ngIf="building.type == BuildingSpec.warehouseId" [building]="building" [city]="city"></warehouse-building-info>
