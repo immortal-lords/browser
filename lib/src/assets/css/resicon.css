@@ -1,0 +1,19 @@
+.res-icon {
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.res-icon.wood {
+    background-image: url(/static/img/resources/wood.png);
+}
+
+.res-icon.stone {
+    background-image: url(/static/img/resources/stone.png);
+}
+
+.res-icon.gold {
+    background-image: url(/static/img/resources/gold.png);
+}

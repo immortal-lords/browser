@@ -5,14 +5,23 @@
 
     <template [ngIf]="building != null">
         <template [ngIf]="building.constructionEnd == null">
-            <div class="action" (click)="upgrade">Upgrade</div>
+            <div class="action" (click)="upgrade">
+                <div class="tooltip">
+                    <building-upgrade-info [city]="city" [building]="building"></building-upgrade-info>
+                </div>
+                Upgrade
+            </div>
         </template>
         <template [ngIf]="building.constructionEnd != null">
-            <div class="action">Cancel</div>
-            <!-- <div class="action">Finish</div> -->
+            <template [ngIf]="building.constructionHasFinished">
+                <div class="action" (click)="complete()">Complete</div>
+            </template>
+            <template [ngIf]="!building.constructionHasFinished">
+                <div class="action" (click)="cancel()">Cancel</div>
+            </template>
         </template>
-        <div class="action">Move</div>
-        <!-- <div class="action">Collect</div> -->
+        <div *ngIf="!isMoving" class="action" (click)="move">Move</div>
+        <div *ngIf="isMoving" class="action" (click)="cancelMove">Cancel move</div>
         <div *ngIf="building.constructionEnd == null" class="action" (click)="demolish">Demolish</div>
     </template>
 </div>

@@ -29,6 +29,9 @@ class CityTileComponent implements OnDestroy {
   StreamSubscription<CityEntity> _tileUpdaterCanceller;
 
   @Input()
+  City city;
+
+  @Input()
   set tile(CityTile value) {
     if (_tileUpdaterCanceller != null) {
       _tileUpdaterCanceller.cancel();
@@ -44,6 +47,12 @@ class CityTileComponent implements OnDestroy {
   CityTile get tile => _tile;
 
   CityEntity get entity => _tile?.entity;
+
+  @Input()
+  Building moving;
+
+  @HostBinding('class.moving')
+  bool get isMoving => moving != null;
 
   @Input()
   @HostBinding('class.selected')

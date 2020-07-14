@@ -34,14 +34,10 @@ class ResourceProgressView {
     return ret;
   }
 
-  String get maxInK => '${max~/1000}K';
-
-  String get rateStr {
-    if(rate < 2000) {
-      return '${rate}';
-    } else {
-      // TODO 1 digit decimal precision
-      return '${rate~/1000}K';
+  String get maxInK {
+    if(max < 10000) {
+      return '${max}';
     }
+    return '${(max/1000).toStringAsFixed(1)}K';
   }
 }

@@ -11,8 +11,10 @@
 }
 
 .container {
-    overflow: hidden;
-    background-color: rgba(0,0,0,0.7);
+    background-color: #d4b59b;
+    box-shadow: 1px 1px 8px 1px #000000cf;
+    border: 1px solid #ffdbbc;
+    border-bottom: none;
     display: flex;
     width: auto;
     flex-direction: row;
@@ -23,6 +25,7 @@
     border-top-right-radius: 10px;
     max-width: 80%;
     flex-wrap: wrap;
+    pointer-events: all;
 }
 
 .action {
@@ -37,6 +40,7 @@
     cursor: pointer;
     user-select: none;
     text-align: center;
+    position: relative;
 }
 
 .action:first-child {
@@ -47,4 +51,26 @@
 
 .action:active {
     box-shadow: inset 3px 3px 6px black;
+}
+
+.tooltip {
+    display: none;
+    background-color: #d4b59b;
+    box-shadow: 1px 1px 7px 1px #000000cf;
+    border: 1px solid #ffdbbc;
+    overflow: hidden;
+    border-radius: 10px;
+    z-index: 51;
+    position: absolute;
+    bottom: calc(100% + 18px);
+    width: 450px;
+    height: 160px;
+    padding: 5px;
+    box-sizing: border-box;
+    pointer-events: none;
+    text-align: left;
+}
+
+.action:hover .tooltip {
+    display: block;
 }

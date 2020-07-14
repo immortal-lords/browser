@@ -1,0 +1,40 @@
+.section {
+    margin-top: 5px;
+}
+
+.section-header {
+    font-size: 15px;
+    margin-bottom: 3px;
+    text-decoration: underline;
+}
+
+.stat {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 3px;
+}
+
+.stat .label {
+    min-width: 200px;
+}
+
+.stat .value {
+    display: flex;
+    align-items: center;
+}
+
+.section .res-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.res-value {
+    margin-right: 7px;
+    margin-right: 10px;
+}
+
+.section .city-node-image {
+    width: 18px;
+    height: 18px;
+}

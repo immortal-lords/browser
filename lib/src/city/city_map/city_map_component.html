@@ -4,17 +4,17 @@
      [style.left.px]="landCenter.x" [style.top.px]="landCenter.y"
         (mousedown)="beginPan($event)">
     <template ngFor let-row [ngForOf]="tiles">
-        <city-tile *ngFor="let tile of row" [tile]="tile" (tileClicked)="tileSelected(tile)"
+        <city-tile *ngFor="let tile of row" [tile]="tile" [city]="city" (tileClicked)="tileSelected(tile)"
                    [style.width.px]="scaleInfo.tileWidth" [style.height.px]="scaleInfo.tileHeight"
                    [style.left.px]="scaleInfo.convertPosX(tile.position)"
                    [style.top.px]="scaleInfo.convertPosY(tile.position)"
                    [scaleInfo]="scaleInfo"
-                   [selected]="selectedTile == tile"></city-tile>
+                   [selected]="selectedTile == tile" [moving]="moving"></city-tile>
     </template>
 </div>
 
 <template [ngIf]="selectedTile != null">
-    <tile-actions [tile]="selectedTile"></tile-actions>
+    <tile-actions [city]="city" [tile]="selectedTile" (moveBuilding)="startMoveBuilding($event)" [isMoving]="moving != null"></tile-actions>
 </template>
 
 <city-info-panel *ngIf="city != null" [city]="city"></city-info-panel>

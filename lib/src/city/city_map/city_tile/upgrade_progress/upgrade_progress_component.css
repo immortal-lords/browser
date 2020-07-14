@@ -4,7 +4,7 @@
     height: 8px;
     background-color: rgb(0,0,0);
     border: 1px solid #f7f7f7;
-    box-shadow: 0px 0px 3px 2px #92f4ff;
+    box-shadow: 0px 0px 4px 2px #ffffffad;
 }
 
 .container {
@@ -22,10 +22,20 @@
 
 .fill {
     height: 100%;
-    background-color: #48e8d9;
+    background-color: #c938d4;
     position: absolute;
     left: 0px;
     top: 0px;
+}
+
+.fill.finished {
+    background-color: #6cd66c;
+    animation: pulse 1s ease-in 0s infinite alternate;
+}
+
+@keyframes pulse {
+  from {background-color: #2a7733;}
+  to {background-color: #6cd66c;}
 }
 
 .duration {

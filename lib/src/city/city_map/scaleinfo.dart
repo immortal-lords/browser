@@ -28,7 +28,7 @@ class ScaleInfo {
         landHeight = convertY(base * 15 * scale);
 
   int convertPosX(Position pos) =>
-      ((pos.y - pos.x - 1) * (tileWidth / 2)).toInt() /* + (landWidth ~/ 2)*/;
+      ((pos.y - pos.x - 1) * (tileWidth / 2)).toInt() + (landWidth ~/ 2);
 
   int convertPosY(Position pos) => ((pos.x + pos.y) * (tileHeight / 2)).toInt();
 

@@ -1,9 +1,18 @@
 <div class="description-holder">
-    <div class="building-image-holder">
-        <div class="city-node-image" [ngClass]="building.css"></div>
-    </div>
+    <div class="city-node-image" [ngClass]="building.css"></div>
     <div class="description-name-holder">
         <div class="name">{{building.spec.name}}</div>
         <div class="description">{{building.spec.description}}</div>
     </div>
 </div>
+
+<lumbercamp-building-info *ngIf="building.type == BuildingSpec.lumberCampId" [building]="building" [city]="city"></lumbercamp-building-info>
+
+<!-- TODO base production -->
+<!-- TODO production bonus -->
+<!-- TODO total production -->
+
+<!-- TODO boost contribution -->
+
+<!-- TODO upgrade cost -->
+<!-- TODO upgrade stats -->

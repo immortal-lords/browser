@@ -1,7 +1,5 @@
 <div class="tile" [style.width.px]="scaleInfo.actualTileWidth" [style.height.px]="scaleInfo.actualTileHeight"
-     (click)="clicked()">
-
-</div>
+     (click)="clicked()"></div>
 
 <template [ngIf]="entity != null">
     <div *ngIf="terrain != null" class="content city-node-image" [ngClass]="terrain.css"></div>
@@ -11,8 +9,8 @@
             <upgrade-progress [building]="building"></upgrade-progress>
         </template>
         <div class="level">{{building.level}}</div>
-        <!-- <div class="tooltip">
-            <building-info [building]="building"></building-info>
-        </div> -->
+        <div *ngIf="selected" class="tooltip">
+            <building-info [building]="building" [city]="city"></building-info>
+        </div>
     </template>
 </template>

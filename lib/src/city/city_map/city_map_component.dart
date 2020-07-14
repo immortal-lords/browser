@@ -117,6 +117,10 @@ class CityMapComponent implements OnInit {
     }
 
     _panStart = _panCurrent = Point<int>(event.client.x, event.client.y);
+
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
   }
 
   @HostListener('mousemove')
@@ -156,13 +160,30 @@ class CityMapComponent implements OnInit {
 
   CityTile get selectedTile => _selectedTile;
 
+  Building moving;
+
   Future<void> tileSelected(CityTile tile) async {
     // print(event.dataTransfer.getData('pan'));
 
-    if(_selectedTile?.position == tile.position) {
+    if (moving != null) {
+      if (tile.entity != null) {
+        window.alert('Can only move buildings to empty tiles');
+        return;
+      }
+
+      final tmp = moving;
+      moving = null;
+      await service.moveBuilding(city.id, tmp.id, tile.position);
+    }
+
+    if (_selectedTile?.position == tile.position) {
       _selectedTile = null;
       return;
     }
     _selectedTile = tile;
+  }
+
+  void startMoveBuilding(Building building) {
+    moving = building;
   }
 }

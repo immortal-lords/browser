@@ -1,3 +1,5 @@
+@import 'package:browser/src/assets/css/resicon.css';
+
 :host {
     width: 100%;
     height: 100%;
@@ -24,24 +26,7 @@
 }
 
 .res-icon {
-    width: 32px;
-    height: 32px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
     z-index: 1;
-}
-
-.res-icon.wood {
-    background-image: url(/static/img/resources/wood.png);
-}
-
-.res-icon.stone {
-    background-image: url(/static/img/resources/stone.png);
-}
-
-.res-icon.gold {
-    background-image: url(/static/img/resources/gold.png);
 }
 
 .progress-holder {
@@ -80,13 +65,10 @@
 
 .progress-highlight {
     position: absolute;
-    left: 4px;
-    top: 2.2px;
-    width: calc(100% - 10px);
+    width: 100%;
     height: 8px;
-    background-color: rgba(255, 255, 255, 0.22);
-    border-radius: 12px;
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.4));
+    background-color: rgba(255,255,255,0.22);
+    background: linear-gradient(0deg,rgba(255,255,255,0.3),rgba(255,255,255,0.4));
 }
 
 .info-max {
