@@ -2,7 +2,14 @@
      (click)="clicked()"></div>
 
 <template [ngIf]="entity != null">
-    <div *ngIf="terrain != null" class="content city-node-image" [ngClass]="terrain.css"></div>
+    <template [ngIf]="terrain != null">
+        <div class="content city-node-image" [ngClass]="terrain.css"></div>
+        <div *ngIf="selected" class="tooltip tooltip-res-node">
+            <city-terrain-info [city]="city" [terrain]="terrain"></city-terrain-info>
+        </div>
+    </template>
+
+
     <template [ngIf]="building != null">
         <div class="content city-node-image" [ngClass]="building.css"></div>
         <template [ngIf]="building.constructionEnd != null">
@@ -10,7 +17,7 @@
         </template>
         <div class="level">{{building.level}}</div>
         <div *ngIf="selected" class="tooltip">
-            <building-info [building]="building" [city]="city"></building-info>
+            <building-info [city]="city" [building]="building"></building-info>
         </div>
     </template>
 </template>

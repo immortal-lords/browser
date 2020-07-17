@@ -8,11 +8,9 @@
 }
 
 .land {
-
     position: absolute;
-    /* transform: rotateX(55deg) rotateZ(45deg); */
 }
 
-city-tile {
+city-tile, battlefield-tile {
     position: absolute;
 }

@@ -14,7 +14,7 @@ import 'package:duration/duration.dart';
 class UpgradeProgressComponent extends ComponentState
     implements OnInit, OnDestroy {
   @Input()
-  Building building;
+  Buildable building;
 
   Timer _timer;
 

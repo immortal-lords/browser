@@ -47,7 +47,7 @@ class QuarryBuildingInfoComponent {
 
     for (final neighbour in neighbours) {
       if (neighbour is CityTerrain &&
-          neighbour.type == CityEntityKind.mountain.name) {
+          neighbour.type == CityTerrainSpec.mountain.type) {
         numMountains++;
       } else if (neighbour is Building &&
           neighbour.type == BuildingSpec.warehouseId) {

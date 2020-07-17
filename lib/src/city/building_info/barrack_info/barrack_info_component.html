@@ -1,0 +1,14 @@
+<div class="section">
+    <div class="section-header">Level {{building.level}} base stats</div>
+    <div class="stat">
+        <div class="label">Recruitment speed bonus</div>
+        <div class="value">{{recruitmentSpeedBonus}}%</div>
+    </div>
+
+    <div class="stat">
+        <div class="label">Troop capacity</div>
+        <div class="value">{{troopCapacity}}</div>
+    </div>
+</div>
+
+<barrack-upgrade-info *ngIf="building.level < 20" [city]="city" [building]="building"></barrack-upgrade-info>

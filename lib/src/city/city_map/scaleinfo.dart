@@ -17,15 +17,17 @@ class ScaleInfo {
 
   final int landHeight;
 
-  static int base = 100;
+  static int base = 256;
 
   ScaleInfo({this.id, this.scale})
       : tileWidth = convertX(base * scale),
         tileHeight = convertY(base * scale),
         actualTileWidth = base * scale,
         actualTileHeight = base * scale,
-        landWidth = convertX(base * 15 * scale),
-        landHeight = convertY(base * 15 * scale);
+        landWidth =
+            convertX(base * (numRowsInCity + numRowsInBattleField) * scale),
+        landHeight =
+            convertY(base * (numColsInCity + numColsInBattleField) * scale);
 
   int convertPosX(Position pos) =>
       ((pos.y - pos.x - 1) * (tileWidth / 2)).toInt() + (landWidth ~/ 2);

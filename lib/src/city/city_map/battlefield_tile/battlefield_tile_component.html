@@ -1,0 +1,17 @@
+<div class="tile" [style.width.px]="scaleInfo.actualTileWidth" [style.height.px]="scaleInfo.actualTileHeight"
+     (click)="clicked()"></div>
+
+<template [ngIf]="entity != null">
+    <template [ngIf]="tower != null">
+        <div class="content city-node-image" [ngClass]="tower.css"></div>
+        <template [ngIf]="tower.constructionEnd != null">
+            <upgrade-progress [building]="tower"></upgrade-progress>
+        </template>
+        <div class="level">{{tower.level}}</div>
+        <!-- TODO
+        <div *ngIf="selected" class="tooltip">
+            <building-info [city]="city" [building]="building"></building-info>
+        </div>
+        -->
+    </template>
+</template>

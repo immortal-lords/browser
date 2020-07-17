@@ -47,7 +47,7 @@ class GoldMineBuildingInfoComponent {
 
     for (final neighbour in neighbours) {
       if (neighbour is CityTerrain &&
-          neighbour.type == CityEntityKind.hill.name) {
+          neighbour.type == CityTerrainSpec.hill.type) {
         numHills++;
       } else if (neighbour is Building &&
           neighbour.type == BuildingSpec.warehouseId) {
@@ -59,7 +59,7 @@ class GoldMineBuildingInfoComponent {
 
     final totalBonus = (numHills * 50) + warehouseBonus;
     final total = (goldPerHour * (100 + totalBonus)) ~/ 100;
-    
+
     combinedGoldPerHour = {
       'hills': numHills,
       'warehouseBonus': warehouseBonus,

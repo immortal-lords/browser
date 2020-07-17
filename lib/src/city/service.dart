@@ -74,32 +74,35 @@ class EmpireService {
 
   Future<void> constructBuilding(
       int cityId, Position position, int type) async {
-    await _api.construct(cityId, position, type);
+    await _api.constructBuilding(cityId, position, type);
     await _updateCity();
   }
 
   Future<void> upgradeBuilding(int cityId, int buildingId, int level) async {
-    await _api.upgrade(cityId, buildingId, level);
+    await _api.upgradeBuilding(cityId, buildingId, level);
     await _updateCity();
   }
 
-  Future<void> completeBuildingUpgrade(int cityId, int buildingId, int level) async {
-    await _api.completeUpgrade(cityId, buildingId);
+  Future<void> completeBuildingUpgrade(
+      int cityId, int buildingId, int level) async {
+    await _api.completeBuildingUpgrade(cityId, buildingId);
     await _updateCity();
   }
 
-  Future<void> cancelBuildingUpgrade(int cityId, int buildingId, int level) async {
-    await _api.cancelUpgrade(cityId, buildingId);
+  Future<void> cancelBuildingUpgrade(
+      int cityId, int buildingId, int level) async {
+    await _api.cancelBuildingUpgrade(cityId, buildingId);
     await _updateCity();
   }
 
-  Future<void> moveBuilding(int cityId, int buildingId, Position newPosition) async {
+  Future<void> moveBuilding(
+      int cityId, int buildingId, Position newPosition) async {
     await _api.moveBuilding(cityId, buildingId, newPosition);
     await _updateCity();
   }
 
   Future<void> demolishBuilding(int cityId, int buildingId) async {
-    await _api.demolish(cityId, buildingId);
+    await _api.demolishBuilding(cityId, buildingId);
     await _updateCity();
   }
 }

@@ -3,6 +3,8 @@ import 'dart:html';
 
 import 'package:angular/angular.dart';
 import 'package:browser/src/city/city_info_panel/info_panel_component.dart';
+import 'package:browser/src/city/city_map/battlefield_tile/battlefield_tile.dart';
+import 'package:browser/src/city/city_map/battlefield_tile/battlefield_tile_component.dart';
 import 'package:browser/src/city/city_map/city_tile/city_tile.dart';
 import 'package:browser/src/city/city_map/city_tile/city_tile_component.dart';
 import 'package:browser/src/city/city_map/scaleinfo.dart';
@@ -21,16 +23,15 @@ import 'package:common/common.dart';
     CityTileComponent,
     TileActionsComponent,
     CityInfoPanelComponent,
+    BattleFieldTileComponent,
   ],
 )
 class CityMapComponent implements OnInit {
-  ChangeDetectorRef _changeDetectorRef;
-
   final EmpireService service;
 
   StreamSubscription<City> _cityUpdateCanceller;
 
-  CityMapComponent(this._changeDetectorRef, this.service) {
+  CityMapComponent(this.service) {
     window.onResize.listen((event) {
       _updateLandCenter();
     }); // TODO cancel subscription
@@ -42,6 +43,9 @@ class CityMapComponent implements OnInit {
 
   final List<List<CityTile>> tiles =
       CityTile.makeTiles(numColsInCity, numRowsInCity);
+
+  final List<List<BattleFieldTile>> battleFieldTiles =
+      BattleFieldTile.makeTiles(numColsInCity, numRowsInCity);
 
   @override
   Future<void> ngOnInit() async {
@@ -58,6 +62,16 @@ class CityMapComponent implements OnInit {
         final tile = row[c];
 
         final entity = city.children[tile.position];
+        tile.entity = entity;
+      }
+    }
+
+    for (int r = 0; r < tiles.length; r++) {
+      final row = battleFieldTiles[r];
+      for (int c = 0; c < row.length; c++) {
+        final tile = row[c];
+
+        final entity = city.battleField[tile.position];
         tile.entity = entity;
       }
     }

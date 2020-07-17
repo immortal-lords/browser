@@ -25,7 +25,8 @@ class QuarryUpgradeInfoComponent {
 
   int get nextStonePerHour => building.spec.production1[building.level + 1];
 
-  int get nextStoneStorageBonus => building.spec.production2[building.level + 1];
+  int get nextStoneStorageBonus =>
+      building.spec.production2[building.level + 1];
 
   ConstResource get upgradeCost =>
       building.spec.constructionCost[building.level + 1];

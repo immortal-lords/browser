@@ -1,5 +1,3 @@
-<!-- [style.margin-left.px]="scaleInfo.marginLeft" [style.margin-top.px]="scaleInfo.marginTop" -->
-<!-- -->
 <div class="land" [style.width.px]="scaleInfo.landWidth" [style.height.px]="scaleInfo.landHeight"
      [style.left.px]="landCenter.x" [style.top.px]="landCenter.y"
         (mousedown)="beginPan($event)">
@@ -10,6 +8,16 @@
                    [style.top.px]="scaleInfo.convertPosY(tile.position)"
                    [scaleInfo]="scaleInfo"
                    [selected]="selectedTile == tile" [moving]="moving"></city-tile>
+    </template>
+
+    <template ngFor let-row [ngForOf]="battleFieldTiles">
+        <!-- TODO (tileClicked)="tileSelected(tile)" [selected]="selectedTile == tile" [moving]="moving" -->
+        <battlefield-tile *ngFor="let tile of row" [tile]="tile" [city]="city"
+                   [style.width.px]="scaleInfo.tileWidth" [style.height.px]="scaleInfo.tileHeight"
+                   [style.left.px]="scaleInfo.convertPosX(tile.globalPosition)"
+                   [style.top.px]="scaleInfo.convertPosY(tile.globalPosition)"
+                   [scaleInfo]="scaleInfo"
+                   ></battlefield-tile>
     </template>
 </div>
 

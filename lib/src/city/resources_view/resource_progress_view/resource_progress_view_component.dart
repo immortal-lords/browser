@@ -23,21 +23,21 @@ class ResourceProgressView {
   ResourceProgressView();
 
   num get progress {
-    if(max == 0) {
+    if (max == 0) {
       return 100;
     }
 
     final ret = (current / max) * 100;
-    if(ret > 100) {
+    if (ret > 100) {
       return 100;
     }
     return ret;
   }
 
   String get maxInK {
-    if(max < 10000) {
+    if (max < 10000) {
       return '${max}';
     }
-    return '${(max/1000).toStringAsFixed(1)}K';
+    return '${(max / 1000).toStringAsFixed(1)}K';
   }
 }

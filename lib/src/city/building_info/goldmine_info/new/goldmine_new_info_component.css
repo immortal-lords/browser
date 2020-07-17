@@ -1,0 +1,11 @@
+@import 'package:browser/src/assets/css/city_node.css';
+@import 'package:browser/src/assets/css/resicon.css';
+@import 'package:browser/src/assets/css/building_info.css';
+
+:host {
+    width: 100%;
+    height: auto;
+    display: block;
+    color: black;
+    font-size: 13px;
+}

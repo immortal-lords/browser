@@ -1,4 +1,5 @@
 import 'package:angular/angular.dart';
+import 'package:browser/src/city/building_info/barrack_info/barrack_info_component.dart';
 import 'package:browser/src/city/building_info/citycenter_info/citycenter_info_component.dart';
 import 'package:browser/src/city/building_info/goldmine_info/goldmine_info_component.dart';
 import 'package:browser/src/city/building_info/lumbercamp_info/lumbercamp_info_component.dart';
@@ -20,6 +21,7 @@ import 'package:common/common.dart';
     QuarryBuildingInfoComponent,
     GoldMineBuildingInfoComponent,
     WarehouseBuildingInfoComponent,
+    BarrackBuildingInfoComponent,
   ],
   exports: [BuildingSpec],
 )

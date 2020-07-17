@@ -1,0 +1,13 @@
+<div class="description-holder">
+    <div class="city-node-image" [ngClass]="spec.css"></div>
+    <div class="description-name-holder">
+        <div class="name">{{spec.name}}</div>
+        <div class="description">{{spec.description}}</div>
+    </div>
+</div>
+
+<lumbercamp-new-info *ngIf="spec.type == BuildingSpec.lumberCampId"></lumbercamp-new-info>
+<quarry-new-info *ngIf="spec.type == BuildingSpec.quarryId"></quarry-new-info>
+<goldmine-new-info *ngIf="spec.type == BuildingSpec.goldMineId"></goldmine-new-info>
+<warehouse-new-info *ngIf="spec.type == BuildingSpec.warehouseId"></warehouse-new-info>
+<barrack-new-info *ngIf="spec.type == BuildingSpec.barrackId"></barrack-new-info>

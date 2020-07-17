@@ -86,6 +86,12 @@ upgrade-progress {
     pointer-events: none;
 }
 
+.tooltip-res-node {
+    height: auto;
+    top: 0%;
+    margin-top: -32px;
+}
+
 :host(.selected:hover) .tooltip {
     display: block;
 }

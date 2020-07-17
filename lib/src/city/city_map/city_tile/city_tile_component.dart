@@ -4,6 +4,7 @@ import 'package:angular/angular.dart';
 import 'package:browser/src/city/building_info/building_info_component.dart';
 import 'package:browser/src/city/city_map/city_tile/upgrade_progress/upgrade_progress_component.dart';
 import 'package:browser/src/city/service.dart';
+import 'package:browser/src/city/terrain_info/terrain_info_component.dart';
 import 'package:common/view.dart';
 import '../scaleinfo.dart';
 
@@ -19,6 +20,7 @@ import 'city_tile.dart';
     NgClass,
     UpgradeProgressComponent,
     BuildingInfoComponent,
+    CityTerrainInfoComponent,
   ],
 )
 class CityTileComponent implements OnDestroy {

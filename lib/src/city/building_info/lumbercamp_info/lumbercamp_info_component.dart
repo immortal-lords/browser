@@ -48,7 +48,7 @@ class LumberCampBuildingInfoComponent {
 
     for (final neighbour in neighbours) {
       if (neighbour is CityTerrain &&
-          neighbour.type == CityEntityKind.forest.name) {
+          neighbour.type == CityTerrainSpec.forest.type) {
         numForests++;
       } else if (neighbour is Building &&
           neighbour.type == BuildingSpec.warehouseId) {

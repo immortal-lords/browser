@@ -14,10 +14,11 @@ import 'package:common/api.dart';
     ResourceProgressView,
   ],
 )
-class ResourcesViewComponent extends ComponentState implements OnInit, OnDestroy {
+class ResourcesViewComponent extends ComponentState
+    implements OnInit, OnDestroy {
   @Input()
   LazyResource resources;
-  
+
   Resource current = Resource();
 
   Timer _timer;
@@ -33,10 +34,9 @@ class ResourcesViewComponent extends ComponentState implements OnInit, OnDestroy
     });
   }
 
-
   @override
   void ngOnDestroy() {
-    if(_timer != null) {
+    if (_timer != null) {
       _timer.cancel();
       _timer = null;
     }

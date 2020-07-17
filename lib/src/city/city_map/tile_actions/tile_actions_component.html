@@ -1,27 +1,56 @@
 <div class="container">
     <template [ngIf]="entity == null">
-        <div *ngFor="let building of buildings" class="action" (click)="construct(building.type)">{{building.name}}</div>
+        <div *ngFor="let building of buildings" class="action" [class.disabled]="canBuild(building) != null" (click)="construct(building)">
+            <div class="city-node-image" [ngClass]="building.css"></div>
+            <div class="tooltip new-building">
+                <new-building-info [spec]="building"></new-building-info>
+                <div class="warning" *ngIf="canBuild(building) != null">
+                    <div class="icon"></div>
+                    <span class="warning-msg">{{canBuild(building)}}</span>
+                </div>
+            </div>
+        </div>
     </template>
 
     <template [ngIf]="building != null">
         <template [ngIf]="building.constructionEnd == null">
-            <div class="action" (click)="upgrade">
+            <div class="action" [class.disabled]="canUpgrade != null" (click)="upgrade">
                 <div class="tooltip">
                     <building-upgrade-info [city]="city" [building]="building"></building-upgrade-info>
+                    <div class="warning" *ngIf="canUpgrade != null">
+                        <div class="icon"></div>
+                        <span class="warning-msg">{{canUpgrade}}</span>
+                    </div>
                 </div>
-                Upgrade
+                <div class="action-icon action-upgrade"></div>
+                <span>Upgrade</span>
             </div>
         </template>
         <template [ngIf]="building.constructionEnd != null">
             <template [ngIf]="building.constructionHasFinished">
-                <div class="action" (click)="complete()">Complete</div>
+                <div class="action" (click)="complete()">
+                    <div class="action-icon action-complete"></div>
+                    <span>Complete</span>
+                </div>
             </template>
             <template [ngIf]="!building.constructionHasFinished">
-                <div class="action" (click)="cancel()">Cancel</div>
+                <div class="action" (click)="cancel()">
+                    <div class="action-icon action-cancel"></div>
+                    <span>Cancel</span>
+                </div>
             </template>
         </template>
-        <div *ngIf="!isMoving" class="action" (click)="move">Move</div>
-        <div *ngIf="isMoving" class="action" (click)="cancelMove">Cancel move</div>
-        <div *ngIf="building.constructionEnd == null" class="action" (click)="demolish">Demolish</div>
+        <div *ngIf="!isMoving" class="action" (click)="move">
+            <div class="action-icon action-move"></div>
+            <span>Move</span>
+        </div>
+        <div *ngIf="isMoving" class="action pressed" (click)="cancelMove">
+            <div class="action-icon action-cancel-move"></div>
+            <span>Move</span>
+        </div>
+        <div *ngIf="building.constructionEnd == null" class="action" (click)="demolish">
+            <div class="action-icon action-demolish"></div>
+            <span>Demolish</span>
+        </div>
     </template>
 </div>
