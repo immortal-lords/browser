@@ -2,27 +2,28 @@
      [style.left.px]="landCenter.x" [style.top.px]="landCenter.y"
         (mousedown)="beginPan($event)">
     <template ngFor let-row [ngForOf]="tiles">
-        <city-tile *ngFor="let tile of row" [tile]="tile" [city]="city" (tileClicked)="tileSelected(tile)"
-                   [style.width.px]="scaleInfo.tileWidth" [style.height.px]="scaleInfo.tileHeight"
-                   [style.left.px]="scaleInfo.convertPosX(tile.position)"
-                   [style.top.px]="scaleInfo.convertPosY(tile.position)"
-                   [scaleInfo]="scaleInfo"
-                   [selected]="selectedTile == tile" [moving]="moving"></city-tile>
-    </template>
+        <template ngFor let-tile [ngForOf]="row">
+            <city-tile *ngIf="tile.isIndustrialSpot" [tile]="tile" [city]="city" (tileClicked)="tileSelected(tile)"
+                       [style.width.px]="scaleInfo.tileWidth" [style.height.px]="scaleInfo.tileHeight"
+                       [style.left.px]="scaleInfo.convertPosX(tile.position)"
+                       [style.top.px]="scaleInfo.convertPosY(tile.position)"
+                       [scaleInfo]="scaleInfo"
+                       [selected]="selectedTile == tile" [moving]="moving"></city-tile>
 
-    <template ngFor let-row [ngForOf]="battleFieldTiles">
-        <!-- TODO (tileClicked)="tileSelected(tile)" [selected]="selectedTile == tile" [moving]="moving" -->
-        <battlefield-tile *ngFor="let tile of row" [tile]="tile" [city]="city"
-                   [style.width.px]="scaleInfo.tileWidth" [style.height.px]="scaleInfo.tileHeight"
-                   [style.left.px]="scaleInfo.convertPosX(tile.globalPosition)"
-                   [style.top.px]="scaleInfo.convertPosY(tile.globalPosition)"
-                   [scaleInfo]="scaleInfo"
-                   ></battlefield-tile>
+            <battlefield-tile *ngIf="tile.isBattleFieldSpot" [tile]="tile" [city]="city"
+                              [style.width.px]="scaleInfo.tileWidth" [style.height.px]="scaleInfo.tileHeight"
+                              [style.left.px]="scaleInfo.convertPosX(tile.position)"
+                              [style.top.px]="scaleInfo.convertPosY(tile.position)"
+                              [scaleInfo]="scaleInfo" [moving]="moving"
+                              (tileClicked)="tileSelected(tile)" [selected]="selectedTile == tile"
+            ></battlefield-tile>
+        </template>
     </template>
 </div>
 
 <template [ngIf]="selectedTile != null">
-    <tile-actions [city]="city" [tile]="selectedTile" (moveBuilding)="startMoveBuilding($event)" [isMoving]="moving != null"></tile-actions>
+    <building-tile-actions *ngIf="selectedTile.isIndustrialSpot" [city]="city" [tile]="selectedTile" (moveBuilding)="startMoveBuilding($event)" [isMoving]="moving != null"></building-tile-actions>
+    <battlefield-tile-actions *ngIf="selectedTile.isBattleFieldSpot" [city]="city" [tile]="selectedTile" (moveBuilding)="startMoveBuilding($event)" [isMoving]="moving != null"></battlefield-tile-actions>
 </template>
 
 <city-info-panel *ngIf="city != null" [city]="city"></city-info-panel>

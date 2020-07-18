@@ -3,12 +3,12 @@ import 'dart:html';
 
 import 'package:angular/angular.dart';
 import 'package:browser/src/city/city_info_panel/info_panel_component.dart';
-import 'package:browser/src/city/city_map/battlefield_tile/battlefield_tile.dart';
+import 'package:browser/src/city/city_map/battlefield_tile/battlefield_tile_actions/battlefield_tile_actions_component.dart';
 import 'package:browser/src/city/city_map/battlefield_tile/battlefield_tile_component.dart';
 import 'package:browser/src/city/city_map/city_tile/city_tile.dart';
 import 'package:browser/src/city/city_map/city_tile/city_tile_component.dart';
 import 'package:browser/src/city/city_map/scaleinfo.dart';
-import 'package:browser/src/city/city_map/tile_actions/tile_actions_component.dart';
+import 'package:browser/src/city/city_map/building_tile_actions/building_tile_actions_component.dart';
 import 'package:browser/src/city/service.dart';
 import 'package:common/api.dart';
 import 'package:common/common.dart';
@@ -21,18 +21,21 @@ import 'package:common/common.dart';
     NgFor,
     NgIf,
     CityTileComponent,
-    TileActionsComponent,
+    BuildingTileActionsComponent,
+    BattleFieldTileActionsComponent,
     CityInfoPanelComponent,
     BattleFieldTileComponent,
   ],
 )
-class CityMapComponent implements OnInit {
+class CityMapComponent implements OnInit, OnDestroy {
   final EmpireService service;
 
   StreamSubscription<City> _cityUpdateCanceller;
 
+  StreamSubscription _windowResizeCanceller;
+
   CityMapComponent(this.service) {
-    window.onResize.listen((event) {
+    _windowResizeCanceller = window.onResize.listen((event) {
       _updateLandCenter();
     }); // TODO cancel subscription
 
@@ -42,10 +45,7 @@ class CityMapComponent implements OnInit {
   ScaleInfo scaleInfo = ScaleInfo.scales.last;
 
   final List<List<CityTile>> tiles =
-      CityTile.makeTiles(numColsInCity, numRowsInCity);
-
-  final List<List<BattleFieldTile>> battleFieldTiles =
-      BattleFieldTile.makeTiles(numColsInCity, numRowsInCity);
+      CityTile.makeTiles(numColsInCity, numRowsInCity + numRowsInBattleField);
 
   @override
   Future<void> ngOnInit() async {
@@ -62,16 +62,6 @@ class CityMapComponent implements OnInit {
         final tile = row[c];
 
         final entity = city.children[tile.position];
-        tile.entity = entity;
-      }
-    }
-
-    for (int r = 0; r < tiles.length; r++) {
-      final row = battleFieldTiles[r];
-      for (int c = 0; c < row.length; c++) {
-        final tile = row[c];
-
-        final entity = city.battleField[tile.position];
         tile.entity = entity;
       }
     }
@@ -174,11 +164,9 @@ class CityMapComponent implements OnInit {
 
   CityTile get selectedTile => _selectedTile;
 
-  Building moving;
+  Buildable moving;
 
   Future<void> tileSelected(CityTile tile) async {
-    // print(event.dataTransfer.getData('pan'));
-
     if (moving != null) {
       if (tile.entity != null) {
         window.alert('Can only move buildings to empty tiles');
@@ -187,7 +175,11 @@ class CityMapComponent implements OnInit {
 
       final tmp = moving;
       moving = null;
-      await service.moveBuilding(city.id, tmp.id, tile.position);
+      if (tile.isIndustrialSpot) {
+        await service.moveBuilding(city.id, tmp.id, tile.position);
+      } else {
+        await service.moveTower(city.id, tmp.id, tile.position);
+      }
     }
 
     if (_selectedTile?.position == tile.position) {
@@ -197,7 +189,13 @@ class CityMapComponent implements OnInit {
     _selectedTile = tile;
   }
 
-  void startMoveBuilding(Building building) {
-    moving = building;
+  void startMoveBuilding(CityEntity entity) {
+    moving = entity;
+  }
+
+  @override
+  void ngOnDestroy() {
+    _cityUpdateCanceller?.cancel();
+    _windowResizeCanceller?.cancel();
   }
 }

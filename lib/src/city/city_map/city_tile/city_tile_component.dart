@@ -28,7 +28,7 @@ class CityTileComponent implements OnDestroy {
 
   EmpireService empireService;
 
-  StreamSubscription<CityEntity> _tileUpdaterCanceller;
+  StreamSubscription _tileUpdaterCanceller;
 
   @Input()
   City city;
@@ -48,13 +48,13 @@ class CityTileComponent implements OnDestroy {
 
   CityTile get tile => _tile;
 
-  CityEntity get entity => _tile?.entity;
+  IndustrialEntity get entity => _tile?.entity;
 
   @Input()
-  Building moving;
+  Buildable moving;
 
   @HostBinding('class.moving')
-  bool get isMoving => moving != null;
+  bool get isMoving => moving != null && moving is Building;
 
   @Input()
   @HostBinding('class.selected')

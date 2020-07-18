@@ -39,6 +39,12 @@ class CityTile {
     _entityChanged.add(_entity);
   }
 
+  bool get isIndustrialSpot => position.y < numRowsInCity;
+
+  bool get isBattleFieldSpot {
+    return !isIndustrialSpot;
+  }
+
   @override
   String toString() => '{position: $position, entity: $entity}';
 

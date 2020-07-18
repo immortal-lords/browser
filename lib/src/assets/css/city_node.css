@@ -39,3 +39,11 @@
 .city-node-image.barrack {
     background-image: url(/static/img/city/nodes/barrack.png);
 }
+
+.city-node-image.wall {
+    background-image: url(/static/img/city/nodes/wall.png);
+}
+
+.city-node-image.archer-tower {
+    background-image: url(/static/img/city/nodes/archer_tower.png);
+}

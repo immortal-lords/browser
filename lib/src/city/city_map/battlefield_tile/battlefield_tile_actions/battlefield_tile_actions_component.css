@@ -1,0 +1,161 @@
+@import 'package:browser/src/assets/css/city_node.css';
+
+:host {
+    display: flex;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: 0px;
+    justify-content: center;
+    flex-direction: row;
+    z-index: 50;
+    pointer-events: none;
+}
+
+.container {
+    background-color: #d4b59b;
+    box-shadow: 1px 1px 8px 1px #000000cf;
+    border: 1px solid #ffdbbc;
+    border-bottom: none;
+    display: flex;
+    width: auto;
+    flex-direction: row;
+    height: auto;
+    align-items: center;
+    padding: 5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    max-width: 80%;
+    flex-wrap: wrap;
+    pointer-events: all;
+}
+
+.action {
+    width: 80px;
+    height: 80px;
+    background-color: #ffffff6b;
+    color: #803434;
+    border-radius: 8px;
+    margin: 5px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: centeR;
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
+    position: relative;
+}
+
+.action:not(.disabled):hover {
+    background-color: #ffffff8b;
+}
+
+.action:not(.disabled).pressed {
+    box-shadow: inset 3px 3px 6px #00000070;
+}
+
+.action.disabled {
+    color: #7b7b7b;
+    cursor: not-allowed;
+}
+
+.action .city-node-image {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.action.disabled .city-node-image {
+    filter: grayscale(60%);
+}
+
+.action:first-child {
+}
+
+.action:last-child {
+}
+
+.action:active:not(.disabled) {
+    box-shadow: inset 3px 3px 6px #000000ba;
+}
+
+.action-icon {
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: contain;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    margin-bottom: 5px;
+}
+
+.action-icon.action-upgrade {
+    background-image: url(/static/img/icons/tile_actions/upgrade.png);
+}
+
+.action-icon.action-cancel {
+    background-image: url(/static/img/icons/tile_actions/cancel.png);
+}
+
+.action-icon.action-complete {
+    background-image: url(/static/img/icons/tile_actions/complete.png);
+}
+
+.action-icon.action-move {
+    background-image: url(/static/img/icons/tile_actions/move.png);
+}
+
+.action-icon.action-cancel-move {
+    background-image: url(/static/img/icons/tile_actions/cancel_move.png);
+}
+
+.action-icon.action-demolish {
+    background-image: url(/static/img/icons/tile_actions/demolish.png);
+}
+
+.tooltip {
+    display: none;
+    background-color: #d4b59b;
+    box-shadow: 1px 1px 7px 1px #000000cf;
+    border: 1px solid #ffdbbc;
+    overflow: hidden;
+    border-radius: 10px;
+    z-index: 51;
+    position: absolute;
+    bottom: calc(100% + 18px);
+    width: 450px;
+    height: 160px;
+    padding: 5px;
+    box-sizing: border-box;
+    pointer-events: none;
+    text-align: left;
+}
+
+.tooltip.new-building {
+    height: 220px;
+}
+
+.action:hover .tooltip {
+    display: block;
+}
+
+.warning {
+    margin-top: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #a92929;
+    font-size: 13px;
+}
+
+.warning .icon {
+    width: 15px;
+    height: 15px;
+    background-image: url(/static/img/icons/warning.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-right: 5px;
+}

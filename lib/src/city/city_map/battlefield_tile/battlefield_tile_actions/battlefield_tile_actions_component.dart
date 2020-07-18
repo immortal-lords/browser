@@ -7,12 +7,12 @@ import 'package:browser/src/city/service.dart';
 import 'package:common/api.dart';
 import 'package:common/common.dart';
 
-import '../city_tile/city_tile.dart';
+import 'package:browser/src/city/city_map/city_tile/city_tile.dart';
 
 @Component(
-  selector: 'tile-actions',
-  styleUrls: ['tile_actions_component.css'],
-  templateUrl: 'tile_actions_component.html',
+  selector: 'battlefield-tile-actions',
+  styleUrls: ['battlefield_tile_actions_component.css'],
+  templateUrl: 'battlefield_tile_actions_component.html',
   providers: [],
   directives: [
     NgIf,
@@ -22,7 +22,7 @@ import '../city_tile/city_tile.dart';
     NewBuildingInfoComponent,
   ],
 )
-class TileActionsComponent {
+class BattleFieldTileActionsComponent {
   final EmpireService empireService;
 
   @Input()
@@ -31,38 +31,38 @@ class TileActionsComponent {
   @Input()
   CityTile tile;
 
+  final _moveController = StreamController<Tower>();
+
+  @Output()
+  Stream<Tower> get moveBuilding => _moveController.stream;
+
   @Input()
   bool isMoving = false;
 
-  final _moveController = StreamController<Building>();
+  BattleFieldTileActionsComponent(this.empireService);
 
-  @Output()
-  Stream<Building> get moveBuilding => _moveController.stream;
+  BattleFieldEntity get entity => tile.entity;
 
-  TileActionsComponent(this.empireService);
-
-  CityEntity get entity => tile.entity;
-
-  Building get building => entity is Building ? entity : null;
+  Tower get tower => entity is Tower ? entity : null;
 
   String get canUpgrade {
-    if (building == null) {
+    if (tower == null) {
       return null;
     }
 
-    if (building.level >= 20) {
+    if (tower.level >= 20) {
       return 'Max level reached';
     }
 
     if (!city.resources
-        .hasEnough(building.spec.constructionCost[building.level + 1])) {
+        .hasEnough(tower.spec.constructionCost[tower.level + 1])) {
       return 'Not enough resources';
     }
 
     return null;
   }
 
-  String canBuild(BuildingSpec spec) {
+  String canBuild(TowerSpec spec) {
     if (spec.minCCLevel > city.level) {
       return 'Required City center level ${spec.minCCLevel}';
     }
@@ -74,13 +74,13 @@ class TileActionsComponent {
     return null;
   }
 
-  Future<void> construct(BuildingSpec spec) async {
+  Future<void> construct(TowerSpec spec) async {
     if (canBuild(spec) != null) {
       return;
     }
 
     _moveController.add(null);
-    await empireService.constructBuilding(
+    await empireService.constructTower(
         empireService.city.id, tile.position, spec.type);
   }
 
@@ -90,34 +90,34 @@ class TileActionsComponent {
     }
 
     _moveController.add(null);
-    await empireService.upgradeBuilding(
-        empireService.city.id, building.id, building.level);
+    await empireService.upgradeTower(
+        empireService.city.id, tower.id, tower.level);
   }
 
   Future<void> complete() async {
     _moveController.add(null);
-    await empireService.completeBuildingUpgrade(
-        empireService.city.id, building.id, building.level);
+    await empireService.completeTowerUpgrade(
+        empireService.city.id, tower.id, tower.level);
   }
 
   Future<void> cancel() async {
     _moveController.add(null);
-    await empireService.cancelBuildingUpgrade(
-        empireService.city.id, building.id, building.level);
+    await empireService.cancelTowerUpgrade(
+        empireService.city.id, tower.id, tower.level);
   }
 
   Future<void> demolish() async {
     _moveController.add(null);
-    await empireService.demolishBuilding(empireService.city.id, building.id);
+    await empireService.demolishTower(empireService.city.id, tower.id);
   }
 
   void move() {
-    _moveController.add(building);
+    _moveController.add(tower);
   }
 
   void cancelMove() {
     _moveController.add(null);
   }
 
-  static final buildings = BuildingSpec.buildings;
+  static final towers = TowerSpec.towers;
 }

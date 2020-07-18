@@ -1,12 +1,11 @@
 import 'dart:async';
 
 import 'package:angular/angular.dart';
+import 'package:browser/src/city/city_map/city_tile/city_tile.dart';
 import 'package:browser/src/city/city_map/city_tile/upgrade_progress/upgrade_progress_component.dart';
 import 'package:browser/src/city/service.dart';
 import 'package:common/view.dart';
 import '../scaleinfo.dart';
-
-import 'battlefield_tile.dart';
 
 @Component(
   selector: 'battlefield-tile',
@@ -20,17 +19,17 @@ import 'battlefield_tile.dart';
   ],
 )
 class BattleFieldTileComponent implements OnDestroy {
-  BattleFieldTile _tile;
+  CityTile _tile;
 
   EmpireService empireService;
 
-  StreamSubscription<BattleFieldEntity> _tileUpdaterCanceller;
+  StreamSubscription _tileUpdaterCanceller;
 
   @Input()
   City city;
 
   @Input()
-  set tile(BattleFieldTile value) {
+  set tile(CityTile value) {
     if (_tileUpdaterCanceller != null) {
       _tileUpdaterCanceller.cancel();
       _tileUpdaterCanceller = null;
@@ -42,15 +41,15 @@ class BattleFieldTileComponent implements OnDestroy {
     });
   }
 
-  BattleFieldTile get tile => _tile;
+  CityTile get tile => _tile;
 
   BattleFieldEntity get entity => _tile?.entity;
 
   @Input()
-  BattleFieldEntity moving;
+  Buildable moving;
 
   @HostBinding('class.moving')
-  bool get isMoving => moving != null;
+  bool get isMoving => moving != null && moving is Tower;
 
   @Input()
   @HostBinding('class.selected')
@@ -59,12 +58,12 @@ class BattleFieldTileComponent implements OnDestroy {
   @Input()
   ScaleInfo scaleInfo;
 
-  final _clickEmitter = StreamController<BattleFieldTile>();
+  final _clickEmitter = StreamController<CityTile>();
 
   @Output()
-  Stream<BattleFieldTile> get tileClicked => _clickEmitter.stream;
+  Stream<CityTile> get tileClicked => _clickEmitter.stream;
 
-  ChangeDetectorRef _changeDetectorRef;
+  final ChangeDetectorRef _changeDetectorRef;
 
   BattleFieldTileComponent(this._changeDetectorRef, this.empireService);
 

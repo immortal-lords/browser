@@ -105,4 +105,35 @@ class EmpireService {
     await _api.demolishBuilding(cityId, buildingId);
     await _updateCity();
   }
+
+  Future<void> constructTower(int cityId, Position position, int type) async {
+    await _api.constructTower(cityId, position, type);
+    await _updateCity();
+  }
+
+  Future<void> upgradeTower(int cityId, int towerId, int level) async {
+    await _api.upgradeTower(cityId, towerId, level);
+    await _updateCity();
+  }
+
+  Future<void> completeTowerUpgrade(int cityId, int towerId, int level) async {
+    await _api.completeTowerUpgrade(cityId, towerId);
+    await _updateCity();
+  }
+
+  Future<void> cancelTowerUpgrade(int cityId, int towerId, int level) async {
+    await _api.cancelTowerUpgrade(cityId, towerId);
+    await _updateCity();
+  }
+
+  Future<void> moveTower(
+      int cityId, int buildingId, Position newPosition) async {
+    await _api.moveTower(cityId, buildingId, newPosition);
+    await _updateCity();
+  }
+
+  Future<void> demolishTower(int cityId, int towerId) async {
+    await _api.demolishTower(cityId, towerId);
+    await _updateCity();
+  }
 }

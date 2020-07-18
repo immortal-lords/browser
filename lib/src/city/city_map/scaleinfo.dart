@@ -17,7 +17,7 @@ class ScaleInfo {
 
   final int landHeight;
 
-  static int base = 256;
+  static int base = 100;
 
   ScaleInfo({this.id, this.scale})
       : tileWidth = convertX(base * scale),

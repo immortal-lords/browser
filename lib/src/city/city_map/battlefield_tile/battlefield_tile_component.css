@@ -20,7 +20,7 @@
 }
 
 :host(.selected) .tile {
-    box-shadow: inset 0px 0px 20px 3px #ffff36;
+    box-shadow: inset 0px 0px 20px 3px #fff7e7;
     box-sizing: border-box;
 }
 
