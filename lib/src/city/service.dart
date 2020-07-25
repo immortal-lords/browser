@@ -45,7 +45,7 @@ class EmpireService {
   }
 
   Future<void> _updateCity() async {
-    _city = await _api.getMyCityById(city.id);
+    _city = await _api.getMyCityById(city.id, city: city);
     _cityUpdateEmitter.add(_city);
   }
 
@@ -134,6 +134,26 @@ class EmpireService {
 
   Future<void> demolishTower(int cityId, int towerId) async {
     await _api.demolishTower(cityId, towerId);
+    await _updateCity();
+  }
+
+  Future<void> recruit(int cityId, int type, int count) async {
+    await _api.recruit(cityId, type, count);
+    await _updateCity();
+  }
+
+  Future<void> completeRecruitment(int cityId, int recruitmentId) async {
+    await _api.completeRecruitment(cityId, recruitmentId);
+    await _updateCity();
+  }
+
+  Future<void> cancelRecruitment(int cityId, int recruitmentId) async {
+    await _api.cancelRecruitment(cityId, recruitmentId);
+    await _updateCity();
+  }
+
+  Future<void> dismissFighters(int cityId, int type, int count) async {
+    await _api.dismissFighters(cityId, type, count);
     await _updateCity();
   }
 }

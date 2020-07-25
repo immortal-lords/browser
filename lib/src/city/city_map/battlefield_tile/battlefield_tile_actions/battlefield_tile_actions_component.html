@@ -3,7 +3,7 @@
         <div *ngFor="let tower of towers" class="action" [class.disabled]="canBuild(tower) != null" (click)="construct(tower)">
             <div class="city-node-image" [ngClass]="tower.css"></div>
             <div class="tooltip new-building">
-                <!-- TODO <new-tower-info [spec]="tower"></new-tower-info> -->
+                <new-tower-info [spec]="tower"></new-tower-info>
                 <div class="warning" *ngIf="canBuild(tower) != null">
                     <div class="icon"></div>
                     <span class="warning-msg">{{canBuild(tower)}}</span>
@@ -15,7 +15,6 @@
     <template [ngIf]="tower != null">
         <template [ngIf]="tower.constructionEnd == null">
             <div class="action" [class.disabled]="canUpgrade != null" (click)="upgrade">
-                <!-- TODO
                 <div class="tooltip">
                     <tower-upgrade-info [city]="city" [tower]="tower"></tower-upgrade-info>
                     <div class="warning" *ngIf="canUpgrade != null">
@@ -23,7 +22,6 @@
                         <span class="warning-msg">{{canUpgrade}}</span>
                     </div>
                 </div>
-                -->
                 <div class="action-icon action-upgrade"></div>
                 <span>Upgrade</span>
             </div>

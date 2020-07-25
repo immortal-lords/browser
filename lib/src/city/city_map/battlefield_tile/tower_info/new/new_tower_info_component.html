@@ -1,0 +1,36 @@
+<div class="description-holder">
+    <div class="city-node-image" [ngClass]="spec.css"></div>
+    <div class="description-name-holder">
+        <div class="name">{{spec.name}}</div>
+        <div class="description">{{spec.description}}</div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-header">Stats</div>
+
+    <div class="stat">
+        <div class="label">Damage</div>
+        <div class="value">{{spec.damage.level1}}</div>
+    </div>
+
+    <div class="stat">
+        <div class="label">Full Health</div>
+        <div class="value">{{spec.hp.level1}}</div>
+    </div>
+
+    <div class="stat">
+        <div class="label">Armor</div>
+        <div class="value">{{spec.armor.level1}}</div>
+    </div>
+
+    <div class="stat">
+        <div class="label">Pierce armor</div>
+        <div class="value">{{spec.pierceArmor.level1}}</div>
+    </div>
+
+    <div class="stat">
+        <div class="label">Attack type</div>
+        <div class="value">{{spec.attackType.name}}</div>
+    </div>
+</div>

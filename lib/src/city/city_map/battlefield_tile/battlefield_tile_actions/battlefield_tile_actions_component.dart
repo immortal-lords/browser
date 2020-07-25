@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:angular/angular.dart';
 import 'package:browser/src/city/building_info/new_info/new_building_info_component.dart';
 import 'package:browser/src/city/building_info/upgrade_info/upgrade_info_component.dart';
+import 'package:browser/src/city/city_map/battlefield_tile/tower_info/new/new_tower_info_component.dart';
+import 'package:browser/src/city/city_map/battlefield_tile/tower_info/upgrade/tower_upgrade_info_component.dart';
 import 'package:browser/src/city/service.dart';
 import 'package:common/api.dart';
 import 'package:common/common.dart';
@@ -18,8 +20,8 @@ import 'package:browser/src/city/city_map/city_tile/city_tile.dart';
     NgIf,
     NgFor,
     NgClass,
-    BuildingUpgradeInfoComponent,
-    NewBuildingInfoComponent,
+    NewTowerInfoComponent,
+    TowerUpgradeInfoComponent,
   ],
 )
 class BattleFieldTileActionsComponent {

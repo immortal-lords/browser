@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:angular/angular.dart';
-import 'package:browser/src/city/resources_view/resource_progress_view/resource_progress_view_component.dart';
+import 'package:browser/src/city/city_info_panel/resources_view/resource_progress_view/resource_progress_view_component.dart';
 import 'package:common/api.dart';
 
 @Component(

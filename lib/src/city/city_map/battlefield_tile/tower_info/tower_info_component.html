@@ -1,0 +1,40 @@
+<div class="description-holder">
+    <div class="city-node-image" [ngClass]="tower.css"></div>
+    <div class="description-name-holder">
+        <div class="name">{{tower.spec.name}}</div>
+        <div class="description">{{tower.spec.description}}</div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-header">Stats</div>
+
+    <!-- TODO hp -->
+
+    <div class="stat">
+        <div class="label">Damage</div>
+        <div class="value">{{tower.damage}}</div>
+    </div>
+
+    <div class="stat">
+        <div class="label">Full Health</div>
+        <div class="value">{{tower.fullHp}}</div>
+    </div>
+
+    <div class="stat">
+        <div class="label">Armor</div>
+        <div class="value">{{tower.armor}}</div>
+    </div>
+
+    <div class="stat">
+        <div class="label">Pierce armor</div>
+        <div class="value">{{tower.pierceArmor}}</div>
+    </div>
+
+    <div class="stat">
+        <div class="label">Attack type</div>
+        <div class="value">{{tower.spec.attackType.name}}</div>
+    </div>
+</div>
+
+<tower-upgrade-info [city]="city" [tower]="tower"></tower-upgrade-info>

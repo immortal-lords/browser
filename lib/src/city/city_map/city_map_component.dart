@@ -9,6 +9,7 @@ import 'package:browser/src/city/city_map/city_tile/city_tile.dart';
 import 'package:browser/src/city/city_map/city_tile/city_tile_component.dart';
 import 'package:browser/src/city/city_map/scaleinfo.dart';
 import 'package:browser/src/city/city_map/building_tile_actions/building_tile_actions_component.dart';
+import 'package:browser/src/city/recruitment/recruitment_component.dart';
 import 'package:browser/src/city/service.dart';
 import 'package:common/api.dart';
 import 'package:common/common.dart';
@@ -25,6 +26,7 @@ import 'package:common/common.dart';
     BattleFieldTileActionsComponent,
     CityInfoPanelComponent,
     BattleFieldTileComponent,
+    RecruitmentComponent,
   ],
 )
 class CityMapComponent implements OnInit, OnDestroy {

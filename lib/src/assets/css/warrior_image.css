@@ -1,0 +1,13 @@
+.warrior-image {
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: contain;
+}
+
+.warrior-image.berserker {
+    background-image: url(/static/img/army/berserker.png);
+}
+
+.warrior-image.archer {
+    background-image: url(/static/img/army/archer.png);
+}

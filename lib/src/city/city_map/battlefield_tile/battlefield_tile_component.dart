@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:angular/angular.dart';
+import 'package:browser/src/city/city_map/battlefield_tile/tower_info/tower_info_component.dart';
 import 'package:browser/src/city/city_map/city_tile/city_tile.dart';
 import 'package:browser/src/city/city_map/city_tile/upgrade_progress/upgrade_progress_component.dart';
 import 'package:browser/src/city/service.dart';
@@ -16,6 +17,7 @@ import '../scaleinfo.dart';
     NgIf,
     NgClass,
     UpgradeProgressComponent,
+    TowerInfoComponent,
   ],
 )
 class BattleFieldTileComponent implements OnDestroy {

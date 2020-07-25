@@ -1,0 +1,40 @@
+<div class="section" *ngIf="tower.level < 20">
+    <div class="section-header">Next upgrade stats</div>
+
+    <div class="stat">
+        <div class="label">Damage</div>
+        <div class="value">{{nextDamage}}</div>
+    </div>
+
+    <div class="stat">
+        <div class="label">Full Health</div>
+        <div class="value">{{nextFullHp}}</div>
+    </div>
+
+    <div class="stat">
+        <div class="label">Armor</div>
+        <div class="value">{{nextArmor}}</div>
+    </div>
+
+    <div class="stat">
+        <div class="label">Pierce armor</div>
+        <div class="value">{{nextPierceArmor}}</div>
+    </div>
+
+    <div class="stat">
+        <div class="label">Upgrade cost</div>
+        <div class="value">
+            <div class="res-icon wood"></div>
+            <span class="res-value">{{upgradeCost.wood}}</span>
+            <div class="res-icon stone"></div>
+            <span class="res-value">{{upgradeCost.stone}}</span>
+            <div class="res-icon gold"></div>
+            <span class="res-value">{{upgradeCost.gold}}</span>
+        </div>
+    </div>
+
+    <div class="stat">
+        <div class="label">Construction time</div>
+        <div class="value">{{constructionTime}}</div>
+    </div>
+</div>

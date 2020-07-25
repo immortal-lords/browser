@@ -68,7 +68,7 @@
 }
 
 .action.disabled .city-node-image {
-    filter: grayscale(60%);
+    filter: grayscale(100%);
 }
 
 .action:first-child {
