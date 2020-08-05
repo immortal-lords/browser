@@ -36,6 +36,8 @@ class CityMapComponent implements OnInit, OnDestroy {
 
   StreamSubscription _windowResizeCanceller;
 
+  bool showRecruitmentWindow = false;
+
   CityMapComponent(this.service) {
     _windowResizeCanceller = window.onResize.listen((event) {
       _updateLandCenter();
@@ -199,5 +201,9 @@ class CityMapComponent implements OnInit, OnDestroy {
   void ngOnDestroy() {
     _cityUpdateCanceller?.cancel();
     _windowResizeCanceller?.cancel();
+  }
+
+  void showRecruitment() {
+    showRecruitmentWindow = true;
   }
 }

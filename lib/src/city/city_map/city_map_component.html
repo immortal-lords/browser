@@ -22,10 +22,11 @@
 </div>
 
 <template [ngIf]="selectedTile != null">
-    <building-tile-actions *ngIf="selectedTile.isIndustrialSpot" [city]="city" [tile]="selectedTile" (moveBuilding)="startMoveBuilding($event)" [isMoving]="moving != null"></building-tile-actions>
+    <building-tile-actions *ngIf="selectedTile.isIndustrialSpot" [city]="city" [tile]="selectedTile" (moveBuilding)="startMoveBuilding($event)"
+                           [isMoving]="moving != null" (recruit)="showRecruitment"></building-tile-actions>
     <battlefield-tile-actions *ngIf="selectedTile.isBattleFieldSpot" [city]="city" [tile]="selectedTile" (moveBuilding)="startMoveBuilding($event)" [isMoving]="moving != null"></battlefield-tile-actions>
 </template>
 
 <city-info-panel *ngIf="city != null" [city]="city"></city-info-panel>
 
-<recruitment-view *ngIf="city != null" [city]="city"></recruitment-view>
+<recruitment-view *ngIf="showRecruitmentWindow" [city]="city" (close)="showRecruitmentWindow = false"></recruitment-view>

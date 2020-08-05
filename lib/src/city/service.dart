@@ -156,4 +156,8 @@ class EmpireService {
     await _api.dismissFighters(cityId, type, count);
     await _updateCity();
   }
+
+  Future<void> getWorld() async {
+    await _api.getWorld();
+  }
 }

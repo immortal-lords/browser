@@ -39,6 +39,11 @@ class BuildingTileActionsComponent {
   @Output()
   Stream<Building> get moveBuilding => _moveController.stream;
 
+  final _recruitController = StreamController();
+
+  @Output()
+  Stream get recruit => _recruitController.stream;
+
   BuildingTileActionsComponent(this.empireService);
 
   IndustrialEntity get entity => tile.entity;
@@ -111,6 +116,10 @@ class BuildingTileActionsComponent {
     await empireService.demolishBuilding(empireService.city.id, building.id);
   }
 
+  void onRecruitClicked() {
+    _recruitController.add(null);
+  }
+
   void move() {
     _moveController.add(building);
   }
@@ -118,6 +127,8 @@ class BuildingTileActionsComponent {
   void cancelMove() {
     _moveController.add(null);
   }
+
+  bool get isBarrack => building.type == BuildingSpec.barrackId;
 
   static final buildings = BuildingSpec.buildings;
 }

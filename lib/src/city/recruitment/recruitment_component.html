@@ -1,38 +1,38 @@
-<div class="content">
-    <div class="spec-list">
-        <div *ngFor="let spec of specs" class="item button" (click)="recruit(spec.type)">
-            <div class="warrior-image" [ngClass]="spec.css"></div>
-            <div class="highlight"></div>
-        </div>
+<div class="window">
+    <div class="header">
+        <div class="heading">Recruit</div>
+        <div class="close" (click)="closeClicked">X</div>
     </div>
-    <div class="main-content">
-        <div class="section">
-            <div class="section-title">Stationed</div>
-            <div class="section-list">
-                <div *ngFor="let fighter of city.fighters" class="item">
-                    <div class="warrior-image" [ngClass]="fighter.css"></div>
-                    <div class="sub-button dismiss" (click)="dismissTroops(fighter.type)"></div>
-                    <div class="count">x{{fighter.count}}</div>
-                    <div class="level">^1</div>
-                </div>
+    <div class="content">
+        <div class="spec-list">
+            <div *ngFor="let spec of specs" class="item button" (click)="recruit(spec.type)">
+                <div class="warrior-image" [ngClass]="spec.css"></div>
+                <div class="highlight"></div>
             </div>
         </div>
-        <div class="section">
-            <div class="section-title">Training</div>
-            <div class="section-list">
-                <div *ngFor="let recruiting of city.recruiting" class="item">
-                    <div class="warrior-image" [ngClass]="recruiting.css"></div>
-                    <div class="progress-bar">
-                        <div class="container">
-                            <div class="fill" [style.width.%]="recruiting.percentage" [class.finished]="recruiting.hasFinished"></div>
-                            <div class="highlight"></div>
-                            <div class="duration">{{recruiting.timeLeftStr}}</div>
-                        </div>
+        <div class="main-content">
+            <div class="section">
+                <div class="section-title">Stationed</div>
+                <div class="section-list">
+                    <div *ngFor="let fighter of city.fighters" class="item">
+                        <div class="warrior-image" [ngClass]="fighter.css"></div>
+                        <div class="sub-button dismiss" (click)="dismissTroops(fighter.type)"></div>
+                        <div class="count">x{{fighter.count}}</div>
+                        <div class="level">^1</div>
                     </div>
-                    <div *ngIf="!recruiting.hasFinished" class="sub-button dismiss" (click)="cancelRecruitment(recruiting.id)"></div>
-                    <div *ngIf="recruiting.hasFinished" class="sub-button complete" (click)="completeRecruitment(recruiting.id)"></div>
-                    <div class="count">x{{recruiting.count}}</div>
-                    <div class="level">^1</div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="section-title">Training</div>
+                <div class="section-list">
+                    <div *ngFor="let recruiting of city.recruiting" class="item">
+                        <div class="warrior-image" [ngClass]="recruiting.css"></div>
+                        <recruiting-progress-bar [recruiting]="recruiting"></recruiting-progress-bar>
+                        <div *ngIf="!recruiting.hasFinished" class="sub-button dismiss" (click)="cancelRecruitment(recruiting.id)"></div>
+                        <div *ngIf="recruiting.hasFinished" class="sub-button complete" (click)="completeRecruitment(recruiting.id)"></div>
+                        <div class="count">x{{recruiting.count}}</div>
+                        <div class="level">^1</div>
+                    </div>
                 </div>
             </div>
         </div>

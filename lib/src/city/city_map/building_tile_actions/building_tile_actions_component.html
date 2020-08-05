@@ -52,5 +52,9 @@
             <div class="action-icon action-demolish"></div>
             <span>Demolish</span>
         </div>
+        <div *ngIf="isBarrack" class="action" (click)="onRecruitClicked">
+            <div class="action-icon action-recruit"></div>
+            <span>Recruit</span>
+        </div>
     </template>
 </div>
